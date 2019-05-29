@@ -37,37 +37,43 @@ module.exports = (app) => {
             "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "date": 007
+            "hour": "7:00",
+            "date": 14
          },
          {
             "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
             "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
-            "date": 007
+            "hour": "7:00",
+            "date": 14
          },
          {
             "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
             "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "date": 007
+            "hour": "7:00",
+            "date": 14
          },
          {
             "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
             "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "date": 007
+            "hour": "7:00",
+            "date": 14
          },
          {
             "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
             "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "date": 007
+            "hour": "7:00",
+            "date": 14
          },
          {
             "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
             "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "date": 007
+            "hour": "7:00",
+            "date": 14
          }
       ]
 
