@@ -1,4 +1,5 @@
 # The Awesome Newspage
+## Lukas Mark Jakobsen
 
 ## Installation
 
