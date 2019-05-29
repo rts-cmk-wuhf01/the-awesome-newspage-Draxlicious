@@ -34,33 +34,39 @@ module.exports = (app) => {
 
       let post = [
          {
+            "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
-            "text": "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "date": 007
          },
          {
+            "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
-            "text": "Sed a elit euismod augue semper congue sit amet ac sapien.",
+            "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
             "date": 007
          },
          {
+            "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
-            "text": "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "date": 007
          },
          {
+            "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
-            "text": "Augue semper congue sit amet ac sapien. Fusce consequat.",
+            "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
             "date": 007
          },
          {
+            "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
-            "text": "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "date": 007
          },
          {
+            "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
-            "text": "Augue semper congue sit amet ac sapien. Fusce consequat.",
+            "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
             "date": 007
          }
       ]
