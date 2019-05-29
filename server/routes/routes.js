@@ -1,8 +1,41 @@
 module.exports = (app) => {
 
    app.get('/', (req, res, next) => {
+
+      let products = [
+         {
+            "name": "Product 1",
+            "price": 100
+         },
+         {
+            "name": "Product 2",
+            "price": 200
+         },
+         {
+            "name": "Product 3",
+            "price": 300
+         }
+      ]
+
+      let lækkerIs = [
+         {
+            "name": "Filur",
+            "pris": 10
+         },
+         {
+            "name": "Isbjørn",
+            "pris": 12
+         },
+         {
+            "name": "Twister",
+            "pris": 15
+         }
+      ]
+
       res.render('home',  {
-         'title': 'Min Forside'
+         'title': 'Min Forside',
+         'latestProducts': products,
+         'bedsteIs': lækkerIs
       });
    });
 

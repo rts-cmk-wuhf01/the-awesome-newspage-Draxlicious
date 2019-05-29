@@ -186,6 +186,22 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
+
+    <% latestProducts.forEach(product =>{ %>
+    <div class="product">
+        <div><%= product.name%></div>
+        <p><%= product.price%> kr.</p>
+    </div>
+    <% }) %>
+
+    <% bedsteIs.forEach(is =>{ %>
+    <div class="is">
+        <div><%= is.name%></div>
+        <p><%= is.pris%> kr.</p>
+    </div>
+    <% }) %>
+     
+
     <!-- ##### Hero Area Start ##### -->
     <%- include('partials/slider.ejs')%>
     <!-- ##### Hero Area End ##### -->
