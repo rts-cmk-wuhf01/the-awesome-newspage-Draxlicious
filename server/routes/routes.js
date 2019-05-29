@@ -132,9 +132,32 @@ module.exports = (app) => {
          }
       ]
 
+      let comment = [
+         {
+            "name": "Jamie Smith",
+            "job": "Enough space for a whole line. I am a Web-udvikler",
+            "img": "img/bg-img/29.jpg"
+         },
+         {
+            "name": "Janni Smith",
+            "job": "Enough space for a whole line. I am a Web-designer",
+            "img": "img/bg-img/30.jpg"
+         },
+         {
+            "name": "Kirsten Smith",
+            "job": " Enough space for a whole line. I am a Medie-grafiker",
+            "img": "img/bg-img/31.jpg"
+         },
+         {
+            "name": "Oliver Smith",
+            "job": "Enough space for a whole line. I am a Nimbus 2000",
+            "img": "img/bg-img/32.jpg"
+         }
+      ]
       res.render('categori',  {
          'title': 'Kategori',
-         "latestPost": post
+         "latestPost": post,
+         "latestComment": comment
       });
    });
 
@@ -185,9 +208,33 @@ module.exports = (app) => {
          }
       ]
 
+      let comment = [
+         {
+            "name": "Jamie Smith",
+            "job": "Enough space for a whole line. I am a Web-udvikler",
+            "img": "img/bg-img/29.jpg"
+         },
+         {
+            "name": "Janni Smith",
+            "job": "Enough space for a whole line. I am a Web-designer",
+            "img": "img/bg-img/30.jpg"
+         },
+         {
+            "name": "Kirsten Smith",
+            "job": " Enough space for a whole line. I am a Medie-grafiker",
+            "img": "img/bg-img/31.jpg"
+         },
+         {
+            "name": "Oliver Smith",
+            "job": "Enough space for a whole line. I am a Nimbus 2000",
+            "img": "img/bg-img/32.jpg"
+         }
+      ]
+      
       res.render('post',  {   
          'title': 'Article',
-         "latestPost": post
+         "latestPost": post,
+         "latestComment": comment
       });
    });
 
