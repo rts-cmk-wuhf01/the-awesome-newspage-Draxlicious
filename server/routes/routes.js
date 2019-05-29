@@ -1,5 +1,24 @@
 module.exports = (app) => {
 
+      let news = [
+         {
+            "number": 1,
+            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales."
+         },
+         {
+            "number": 2,
+            "text":  " Consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer."
+         },
+         {
+            "number": 3,
+            "text":  " Adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo."
+         },
+         {
+            "number": 4,
+            "text":  " Eu metus sit amet odio sodales placer. Sed varius leo ac..."
+         },
+      ]
+
    app.get('/', (req, res, next) => {
 
       let products = [
@@ -154,10 +173,14 @@ module.exports = (app) => {
             "img": "img/bg-img/32.jpg"
          }
       ]
+      
+
+
       res.render('categori',  {
          'title': 'Kategori',
          "latestPost": post,
-         "latestComment": comment
+         "latestComment": comment,
+         "latestNews": news
       });
    });
 
@@ -234,7 +257,8 @@ module.exports = (app) => {
       res.render('post',  {   
          'title': 'Article',
          "latestPost": post,
-         "latestComment": comment
+         "latestComment": comment,
+         "latestNews": news
       });
    });
 
