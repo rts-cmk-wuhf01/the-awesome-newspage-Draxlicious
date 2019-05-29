@@ -32,10 +32,44 @@ module.exports = (app) => {
          }
       ]
 
+      let post = [
+         {
+            "name": "FINANCE",
+            "text": "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "date": 007
+         },
+         {
+            "name": "POLITICS",
+            "text": "Sed a elit euismod augue semper congue sit amet ac sapien.",
+            "date": 007
+         },
+         {
+            "name": "HEALTH",
+            "text": "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "date": 007
+         },
+         {
+            "name": "FINANCE",
+            "text": "Augue semper congue sit amet ac sapien. Fusce consequat.",
+            "date": 007
+         },
+         {
+            "name": "TRAVEL",
+            "text": "Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "date": 007
+         },
+         {
+            "name": "POLITICS",
+            "text": "Augue semper congue sit amet ac sapien. Fusce consequat.",
+            "date": 007
+         }
+      ]
+
       res.render('home',  {
          'title': 'Min Forside',
          'latestProducts': products,
-         'bedsteIs': lækkerIs
+         'bedsteIs': lækkerIs,
+         "latestPost": post
       });
    });
 
