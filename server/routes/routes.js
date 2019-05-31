@@ -158,17 +158,17 @@ module.exports = (app) => {
             "img": "img/bg-img/29.jpg"
          },
          {
-            "name": "Janni Smith",
+            "name": "Christy Williams",
             "job": "Enough space for a whole line. I am a Web-designer",
             "img": "img/bg-img/30.jpg"
          },
          {
-            "name": "Kirsten Smith",
+            "name": "Sandy Doe",
             "job": " Enough space for a whole line. I am a Medie-grafiker",
             "img": "img/bg-img/31.jpg"
          },
          {
-            "name": "Oliver Smith",
+            "name": "Christian Williams",
             "job": "Enough space for a whole line. I am a Nimbus 2000",
             "img": "img/bg-img/32.jpg"
          }
