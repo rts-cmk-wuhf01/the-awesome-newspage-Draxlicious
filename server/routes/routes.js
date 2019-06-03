@@ -67,6 +67,7 @@ module.exports = (app) => {
             "img": "img/bg-img/11.jpg"
          },
       ]
+
       const news = [
          {
             "number": 1,
@@ -127,37 +128,37 @@ module.exports = (app) => {
             "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "2019-04-14 07:00:14"
+            "dateTime": "APRIL 14, 2019"  
          },
          {
             "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
             "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
-            "dateTime": "2019-04-14 07:00:14"
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
             "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "2019-04-14 07:00:14"
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
             "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "dateTime": "2019-04-14 07:00:14"
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
             "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "2019-04-14 07:00:14"
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
             "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "dateTime": "2019-04-14 07:00:14"
+            "dateTime": "APRIL 14, 2019"
          }
       ]
 
@@ -173,49 +174,44 @@ module.exports = (app) => {
    });
 
    app.get('/categori', (req, res, next) => {
+      
 
       let post = [
          {
             "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"  
          },
          {
             "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
             "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
             "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
             "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
             "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
             "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          }
       ]
 
@@ -223,22 +219,26 @@ module.exports = (app) => {
          {
             "name": "Jamie Smith",
             "job": "Enough space for a whole line. I am a Web-udvikler",
-            "img": "img/bg-img/29.jpg"
+            "img": "img/bg-img/29.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
          },
          {
             "name": "Christy Williams",
             "job": "Enough space for a whole line. I am a Web-designer",
-            "img": "img/bg-img/30.jpg"
+            "img": "img/bg-img/30.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
          },
          {
             "name": "Sandy Doe",
             "job": " Enough space for a whole line. I am a Medie-grafiker",
-            "img": "img/bg-img/31.jpg"
+            "img": "img/bg-img/31.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
          },
          {
             "name": "Christian Williams",
             "job": "Enough space for a whole line. I am a Nimbus 2000",
-            "img": "img/bg-img/32.jpg"
+            "img": "img/bg-img/32.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
          }
       ]
       
@@ -259,43 +259,37 @@ module.exports = (app) => {
             "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"  
          },
          {
             "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
             "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
             "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
             "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
             "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
             "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "hour": "7:00",
-            "date": 14
+            "dateTime": "APRIL 14, 2019"
          }
       ]
 

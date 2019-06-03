@@ -1,5 +1,6 @@
 <h3>Latest Comments</h3>
 <% latestComment.forEach(comment => {%>
+<% let now = new Date(comment.dateTime); %>
     <!-- Single Comments -->
     <div class="single-comments d-flex">
         <div class="comments-thumbnail mr-15">
@@ -7,7 +8,7 @@
         </div>
         <div class="comments-text">
             <a href="#"><%= comment.name%> <span>on</span> <%= comment.job%></a>
-            <p>06:34 am, April 14, 2018</p>
+            <p><%= dateAndTime.format(now, 'HH:MM A, MMMM, YYYY') %></p>
         </div>
     </div>
 <%})%>
