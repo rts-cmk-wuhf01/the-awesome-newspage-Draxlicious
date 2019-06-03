@@ -100,7 +100,8 @@ module.exports = (app) => {
          'title': 'Min Forside',
          'latestProducts': products,
          'bedsteIs': lækkerIs,
-         "latestPost": post
+         "latestPost": post,
+         "latestNews": news
       });
    });
 

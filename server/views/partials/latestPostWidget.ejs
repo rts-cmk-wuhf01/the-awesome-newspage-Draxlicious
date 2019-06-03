@@ -1,4 +1,7 @@
 <!-- Single Featured Post -->
+<% let now = new Date('2019-04-14 07:00:14'); %>
+
+
 <% latestPost.forEach(post =>{ %>
     <div class="single-blog-post small-featured-post d-flex">
         <div class="post-thumb">
@@ -10,7 +13,7 @@
                 <a href="#" class="post-title">
                     <h6><%= post.text %></h6>
                 </a>
-                <p class="post-date"><span><%= post.hour %> AM</span> | <span>April <%= post.date %></span></p>
+                <p class="post-date"><span><%= dateAndTime.format(now, 'h:mm A | MMMM DD') %> </span>
             </div>
         </div>
     </div>

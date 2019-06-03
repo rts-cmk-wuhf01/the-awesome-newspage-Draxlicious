@@ -21,16 +21,17 @@ app.set('view engine', 'ejs');
 // peg på den mappe hvor alle views filerne er placeret
 app.set('views', './server/views');
 
+
 // npm install date-and-time --save
 app.locals.dateAndTime = require('date-and-time');
 app.locals.dateAndTime.locale('en');
 app.locals.dateAndTime.setLocales('en', {
    'A': ['AM', 'PM'],
-   'dddd': ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'],
-   'ddd': ['søn', 'man', 'tirs', 'ons', 'tors', 'fre', 'lør'],
-   'dd': ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø'],
-   'MMM': ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
-   'MMMM': ['januar', ' februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december']
+   // 'dddd': ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'],
+   // 'ddd': ['søn', 'man', 'tirs', 'ons', 'tors', 'fre', 'lør'],
+   // 'dd': ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø'],
+   // 'MMM': ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+   // 'MMMM': ['januar', ' februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december']
 });
 
 /* indlæs alle de routes serveren skal håndtere
