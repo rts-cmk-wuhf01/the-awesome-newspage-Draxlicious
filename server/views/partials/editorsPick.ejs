@@ -1,0 +1,30 @@
+<!-- Editors Pick -->
+            <div class="col-12 col-md-7 col-lg-9">
+                <div class="section-heading">
+                    <h6>Editor’s Pick</h6>
+                </div>
+
+                <div class="row">
+
+                    <!-- Single Post -->
+                  <% editorsPost.forEach(editor  => {%>
+                    <div class="col-12 col-lg-4">
+                        <div class="single-blog-post">
+                        
+                            <div class="post-thumb">
+                                <a href="#"><img src="<%= editor.img %>" alt=""></a>
+                            </div>
+                            <div class="post-data">
+                                <a href="#" class="post-title">
+                                    <h6><%= editor.text %></h6>
+                                </a>
+                                <div class="post-meta">
+                                    <div class="post-date"><a href="#"><%= editor.dateTime %></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%})%>
+                </div>
+            </div>
+<%- include('worldNews.ejs')%>

@@ -1,5 +1,7 @@
 module.exports = (app) => {
 
+      
+   
       const editors = [
          {
             "img": "img/bg-img/1.jpg",
@@ -30,34 +32,41 @@ module.exports = (app) => {
             "img": "img/bg-img/6.jpg",
             "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
             "dateTime": "February 11, 2018"
+         }
+      ]
+      
+      const worldnews = [
+         {
+            "number": 1,
+            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+            "dateTime": 'February 11, 2018',
+            "img": "img/bg-img/7.jpg"
          },
          {
-            "img": "img/bg-img/7.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
+            "number": 1,
+            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+            "dateTime": 'February 11, 2018',
+            "img": "img/bg-img/8.jpg"
          },
          {
-            "img": "img/bg-img/8.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
+            "number": 1,
+            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+            "dateTime": 'February 11, 2018',
+            "img": "img/bg-img/9.jpg"
          },
          {
-            "img": "img/bg-img/9.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
+            "number": 1,
+            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+            "dateTime": 'February 11, 2018',
+            "img": "img/bg-img/10.jpg"
          },
          {
-            "img": "img/bg-img/10.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
-         },
-         {
-            "img": "img/bg-img/11.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
+            "number": 1,
+            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+            "dateTime": 'February 11, 2018',
+            "img": "img/bg-img/11.jpg"
          },
       ]
-
       const news = [
          {
             "number": 1,
@@ -158,7 +167,8 @@ module.exports = (app) => {
          'bedsteIs': lækkerIs,
          "latestPost": post,
          "latestNews": news,
-         "editorsPost": editors
+         "editorsPost": editors,
+         "worldNews": worldnews
       });
    });
 
