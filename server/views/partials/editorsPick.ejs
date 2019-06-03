@@ -8,6 +8,7 @@
 
                     <!-- Single Post -->
                   <% editorsPost.forEach(editor  => {%>
+                   <% let now = new Date(editor.dateTime); %>
                     <div class="col-12 col-lg-4">
                         <div class="single-blog-post">
                         
@@ -19,7 +20,7 @@
                                     <h6><%= editor.text %></h6>
                                 </a>
                                 <div class="post-meta">
-                                    <div class="post-date"><a href="#"><%= editor.dateTime %></a></div>
+                                    <div class="post-date"><a href="#"><%= dateAndTime.format(now, 'MMMM DD, YYYY') %></a></div>
                                 </div>
                             </div>
                         </div>
