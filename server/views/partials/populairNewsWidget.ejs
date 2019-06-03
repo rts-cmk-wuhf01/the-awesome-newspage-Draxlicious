@@ -1,14 +1,14 @@
-<% let now = new Date('2019-04-14 07:00:14'); %>
-<%= dateAndTime.format(now, 'h:mm A | MMMM DD') %>
+
 
 
 <h3>4 Most Popular News</h3>
 <%latestNews.forEach(news => { %>
+<% let now = new Date(news.dateTime); %>
     <!-- Single Popular Blog -->
     <div class="single-popular-post">
         <a href="#">
             <h6><span><%= news.number%>.</span><%= news.text%></h6>
         </a>
-        <p>April 14, 2018</p>
+        <p><%= dateAndTime.format(now, 'MMMM DD, YYYY') %></p>
     </div>
 <%}) %>
