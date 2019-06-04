@@ -320,17 +320,17 @@ module.exports = (app) => {
          {
             "name": "Børge Hemming",
             "img": "img/bg-img/30.jpg",
-            "time": "06:34"
+            "time": "April 15, 2018 06:34"
          },
          {
             "name": "Børge Hemming",
             "img": "img/bg-img/31.jpg",
-            "time": "06:34"
+            "time": "April 15, 2018 06:35"
          },
          {
             "name": "Børge Hemming",
             "img": "img/bg-img/32.jpg",
-            "time": "06:34"
+            "time": "April 15, 2018 06:36"
          },
       ]
 
