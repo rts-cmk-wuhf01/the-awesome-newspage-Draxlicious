@@ -36,19 +36,13 @@
 
                 <div class="col-12 col-lg-4">
                     <!-- Single Contact Information -->
+                    <% formularAdress.forEach(formular => {%>
+
+                    
                     <div class="single-contact-information mb-30">
-                        <h6>Address:</h6>
-                        <p>481 Creekside Lane Avila <br>Beach, CA 93424</p>
+                        <h6><%= formular.title %>:</h6>
+                        <p><%= formular.main %> <br><%= formular.second %></p>
                     </div>
-                    <!-- Single Contact Information -->
-                    <div class="single-contact-information mb-30">
-                        <h6>Phone:</h6>
-                        <p>+53 345 7953 32453 <br>+53 345 7557 822112</p>
-                    </div>
-                    <!-- Single Contact Information -->
-                    <div class="single-contact-information mb-30">
-                        <h6>Email:</h6>
-                        <p>yourmail@gmail.com</p>
-                    </div>
+                    <%})%>
                 </div>
             </div>

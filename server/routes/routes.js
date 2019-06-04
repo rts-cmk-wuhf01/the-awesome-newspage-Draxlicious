@@ -344,14 +344,121 @@ module.exports = (app) => {
    });
 
    app.get('/about', (req, res, next) => {
+
+      let aboutText = [
+         {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi nibh, et ornare neque ullamcorper ac. Nam id congue lec tus, a venenatis massa. Maecenas justo libero, vulputate vel nunc id, blandit feugiat sem."
+         },
+         {
+            "text": "Donec gravida non metus blandit facilisis. Cras tincidunt, lorem aliquam molestie eleifend, libero dui volutpat dui, nec sodales massa libero ut metus. Mauris pretium elit ut dapibus consequat. Nam ut lorem nec sem dignissim gravida. Duis fringilla."
+         },
+         {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consectetur, purus imperdiet volutpat tincidunt, eros sem mollis quam, ut placerat urna neque at massa. Proin vitae pulvinar justo. Donec vel placerat enim, at ultricies risus.."
+         },
+         {
+            "text": "Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellentesque lectus et accumsan aliquam. Fusce lobortis cursus quam, id mattis sapien. Aliquam erat volutpat. Aliquam placerat, est quis sagittis tincidunt, ipsum eros posuere mi, ut finibus quam sem eget ex."
+         },
+      ]
+
+      let aboutCounter = [
+         {
+            "counter": "12",
+            "title": "News Article",
+            "text": "Donec turpis erat, scelerisq"
+         },
+         {
+            "counter": "45",
+            "title": "Reporters",
+            "text": "Donec turpis erat, scelerisq"
+         },
+         {
+            "counter": "25",
+            "title": "Awards Won",
+            "text": "Donec turpis erat, scelerisq"
+         },
+         {
+            "counter": "17",
+            "title": "Years old",
+            "text": "Donec turpis erat, scelerisq"
+         },
+      ]
+
+      let aboutPictures = [
+         {
+            "name": "James Williams",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t1.jpg"
+         },
+         {
+            "name": "Christinne Smith",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t2.jpg"
+         },
+         {
+            "name": "Alicia Dormund",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t3.jpg"
+         },
+         {
+            "name": "Steve Duncan",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t4.jpg"
+         },
+         {
+            "name": "James Williams",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t5.jpg"
+         },
+         {
+            "name": "Christinne Smith",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t6.jpg"
+         },
+         {
+            "name": "Alicia Dormund",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t7.jpg"
+         },
+         {
+            "name": "Steve Duncan",
+            "job": "Senior Editor",
+            "img": "img/bg-img/t8.jpg"
+         }
+      ]
+
       res.render('about',  {
-         'title': 'About us'
+         'title': 'About us',
+         "textForAbout": aboutText,
+         "counter": aboutCounter,
+         "aboutFromPictures": aboutPictures
       });
    });
+   
+
 
    app.get('/contact', (req, res, next) => {
+
+      let adress = [
+         {
+            "title": "Adress",
+            "main": "481 Creekside Lane Avila",
+            "second": "Beach, CA 93424"
+         },
+         {
+            "title": "Phone",
+            "main": "+53 345 7953 32453",
+            "second": "+53 345 7557 822112",
+         },
+         {
+            "title": "Email",
+            "main": "yourmail@gmail.com",
+         },
+
+      ]
+
       res.render('contact',  {
-         'title': 'Kontakt'
+         'title': 'Kontakt',
+         "formularAdress": adress
       });
    });
 
