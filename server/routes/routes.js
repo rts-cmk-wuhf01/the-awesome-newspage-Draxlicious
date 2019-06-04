@@ -323,12 +323,12 @@ module.exports = (app) => {
             "time": "April 15, 2018 06:34"
          },
          {
-            "name": "Børge Hemming",
+            "name": "Biver Demming",
             "img": "img/bg-img/31.jpg",
             "time": "April 15, 2018 06:35"
          },
          {
-            "name": "Børge Hemming",
+            "name": "Buller flemming",
             "img": "img/bg-img/32.jpg",
             "time": "April 15, 2018 06:36"
          },
