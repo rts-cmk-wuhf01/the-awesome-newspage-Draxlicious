@@ -9,7 +9,11 @@ module.exports = (app) => {
       // afslut forbindelsen til databasen
       db.end();
 
-      res.send(products);
+      // res.send(products);
+
+      res.render('products', {
+         'products': products
+      })
 });   
 
    
