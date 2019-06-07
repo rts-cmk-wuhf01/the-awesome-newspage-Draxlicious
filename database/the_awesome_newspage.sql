@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2019 at 11:29 AM
+-- Generation Time: Jun 07, 2019 at 01:26 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -35,7 +35,10 @@ CREATE TABLE `article` (
   `article_content` varchar(3000) NOT NULL,
   `article_likes` smallint(6) NOT NULL,
   `atricle_comment` smallint(6) NOT NULL,
-  `article_date` datetime NOT NULL
+  `article_date` datetime NOT NULL,
+  `fk_article_author_id` int(11) NOT NULL,
+  `fk_article_category_id` int(11) NOT NULL,
+  `fk_article_user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -52,6 +55,14 @@ CREATE TABLE `authors` (
   `author_about` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `authors`
+--
+
+INSERT INTO `authors` (`author_id`, `author_name`, `fk_author_image_id`, `author_title`, `author_about`) VALUES
+(1, 'Chrstian Williams', 1, '', ''),
+(2, 'Johnny Williams', 2, '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +75,21 @@ CREATE TABLE `categories` (
   `category_link` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `category_title`, `category_link`) VALUES
+(1, 'Politics', ''),
+(2, 'Breaking News', ''),
+(3, 'Business', ''),
+(4, 'Technology', ''),
+(5, 'Health', ''),
+(6, 'Travel', ''),
+(7, 'Health', ''),
+(8, 'Travel', ''),
+(9, 'Sports', '');
+
 -- --------------------------------------------------------
 
 --
@@ -74,7 +100,8 @@ CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `comment_user` varchar(32) NOT NULL,
   `comment_message` varchar(256) NOT NULL,
-  `comment_timestamp` datetime NOT NULL
+  `comment_timestamp` datetime NOT NULL,
+  `fk_comment_image_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -101,6 +128,62 @@ CREATE TABLE `images` (
   `image_id` int(11) NOT NULL,
   `image_name` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`image_id`, `image_name`) VALUES
+(1, '1.jpg'),
+(2, '2.jpg'),
+(3, '3.jpg'),
+(4, '4.jpg'),
+(5, '5.jpg'),
+(6, '6.jpg'),
+(7, '7.jpg'),
+(8, '8.jpg'),
+(9, '9.jpg'),
+(10, '10.jpg'),
+(11, '11.jpg'),
+(12, '12.jpg'),
+(13, '13.jpg'),
+(14, '14.jpg'),
+(15, '15.jpg'),
+(16, '16.jpg'),
+(17, '17.jpg'),
+(18, '18.jpg'),
+(19, '19.jpg'),
+(20, '20.jpg'),
+(21, '21.jpg'),
+(22, '22.jpg'),
+(23, '23.jpg'),
+(24, '24.jpg'),
+(25, '25.jpg'),
+(26, '26.jpg'),
+(27, '27.jpg'),
+(28, '28.jpg'),
+(29, '29.jpg'),
+(30, '30.jpg'),
+(31, '31.jpg'),
+(32, '32.jpg'),
+(33, 'bg1.jpg'),
+(34, 'footer-add.gif'),
+(35, 'hero-add.gif'),
+(36, 't1.jpg'),
+(37, 't2.jpg'),
+(38, 't3.jpg'),
+(39, 't4.jpg'),
+(40, 't5.jpg'),
+(41, 't6.jpg'),
+(42, 't7.jpg'),
+(43, 'video1.jpg'),
+(44, 'video2.jpg'),
+(45, 'video3.jpg'),
+(46, 'chat.png'),
+(47, 'favicon.ico'),
+(48, 'like.png'),
+(49, 'logo.png'),
+(50, 't8.jpg');
 
 -- --------------------------------------------------------
 
@@ -197,13 +280,13 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -221,7 +304,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `users`
