@@ -5,7 +5,7 @@ module.exports = (app) => {
    app.get('/database',  async (req,res,next)=>{
       let db = await mysql.connect();
       // udfør en (eller flere) forespørgel(er)
-      let [products] = await db.execute('SELECT * FROM products');
+      let [products] = await db.execute('SELECT * FROM products');e
       // afslut forbindelsen til databasen
       db.end();
 
