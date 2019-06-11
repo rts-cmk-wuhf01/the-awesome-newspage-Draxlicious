@@ -19,32 +19,32 @@ module.exports = (app) => {
    
       const editors = [
          {
-            "/img": "/img/bg-img/1.jpg",
+            "img": "img/bg-img/1.jpg",
             "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
             "dateTime": "February 11, 2018"
          },
          {
-            "/img": "/img/bg-img/2.jpg",
+            "img": "img/bg-img/2.jpg",
             "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
             "dateTime": "February 11, 2018"
          },
          {
-            "/img": "/img/bg-img/3.jpg",
+            "img": "img/bg-img/3.jpg",
             "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
             "dateTime": "February 11, 2018"
          },
          {
-            "/img": "/img/bg-img/4.jpg",
+            "img": "img/bg-img/4.jpg",
             "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
             "dateTime": "February 11, 2018"
          },
          {
-            "/img": "/img/bg-img/5.jpg",
+            "img": "img/bg-img/5.jpg",
             "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
             "dateTime": "February 11, 2018"
          },
          {
-            "/img": "/img/bg-img/6.jpg",
+            "img": "img/bg-img/6.jpg",
             "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
             "dateTime": "February 11, 2018"
          }
@@ -55,31 +55,31 @@ module.exports = (app) => {
             "number": 1,
             "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
             "dateTime": 'February 11, 2018',
-            "/img": "/img/bg-img/7.jpg"
+            "img": "img/bg-img/7.jpg"
          },
          {
             "number": 1,
             "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
             "dateTime": 'February 11, 2018',
-            "/img": "/img/bg-img/8.jpg"
+            "img": "img/bg-img/8.jpg"
          },
          {
             "number": 1,
             "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
             "dateTime": 'February 11, 2018',
-            "/img": "/img/bg-img/9.jpg"
+            "img": "img/bg-img/9.jpg"
          },
          {
             "number": 1,
             "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
             "dateTime": 'February 11, 2018',
-            "/img": "/img/bg-img/10.jpg"
+            "img": "img/bg-img/10.jpg"
          },
          {
             "number": 1,
             "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
             "dateTime": 'February 11, 2018',
-            "/img": "/img/bg-img/11.jpg"
+            "img": "img/bg-img/11.jpg"
          },
       ]
 
@@ -147,37 +147,37 @@ module.exports = (app) => {
 
       let post = [
          {
-            "img": "/img/bg-img/19.jpg",
+            "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"  
          },
          {
-            "img": "/img/bg-img/20.jpg",
+            "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
             "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/21.jpg",
+            "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
             "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/22.jpg",
+            "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
             "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/23.jpg",
+            "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
             "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/24.jpg",
+            "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
             "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
             "dateTime": "APRIL 14, 2019"
@@ -213,37 +213,37 @@ module.exports = (app) => {
 
       let post = [
          {
-            "img": "/img/bg-img/19.jpg",
+            "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"  
          },
          {
-            "img": "/img/bg-img/20.jpg",
+            "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
             "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/21.jpg",
+            "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
             "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/22.jpg",
+            "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
             "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/23.jpg",
+            "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
             "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/24.jpg",
+            "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
             "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
             "dateTime": "APRIL 14, 2019"
@@ -254,25 +254,25 @@ module.exports = (app) => {
          {
             "name": "Jamie Smith",
             "job": "Enough space for a whole line. I am a Web-udvikler",
-            "img": "/img/bg-img/29.jpg",
+            "img": "img/bg-img/29.jpg",
             "dateTime": "06:34 AM, APRIL 14, 2018"
          },
          {
             "name": "Christy Williams",
             "job": "Enough space for a whole line. I am a Web-designer",
-            "img": "/img/bg-img/30.jpg",
+            "img": "img/bg-img/30.jpg",
             "dateTime": "06:34 AM, APRIL 14, 2018"
          },
          {
             "name": "Sandy Doe",
             "job": " Enough space for a whole line. I am a Medie-grafiker",
-            "img": "/img/bg-img/31.jpg",
+            "img": "img/bg-img/31.jpg",
             "dateTime": "06:34 AM, APRIL 14, 2018"
          },
          {
             "name": "Christian Williams",
             "job": "Enough space for a whole line. I am a Nimbus 2000",
-            "img": "/img/bg-img/32.jpg",
+            "img": "img/bg-img/32.jpg",
             "dateTime": "06:34 AM, APRIL 14, 2018"
          }
       ]
@@ -292,37 +292,37 @@ module.exports = (app) => {
  
    //    let post = [
    //       {
-   //          "/img": "/img/bg-img/19.jpg",
+   //          "img": "img/bg-img/19.jpg",
    //          "name": "FINANCE",
    //          "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
    //          "dateTime": "APRIL 14, 2019"  
    //       },
    //       {
-   //          "/img": "/img/bg-img/20.jpg",
+   //          "img": "img/bg-img/20.jpg",
    //          "name": "POLITICS",
    //          "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
    //          "dateTime": "APRIL 14, 2019"
    //       },
    //       {
-   //          "/img": "/img/bg-img/21.jpg",
+   //          "img": "img/bg-img/21.jpg",
    //          "name": "HEALTH",
    //          "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
    //          "dateTime": "APRIL 14, 2019"
    //       },
    //       {
-   //          "/img": "/img/bg-img/22.jpg",
+   //          "img": "img/bg-img/22.jpg",
    //          "name": "FINANCE",
    //          "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
    //          "dateTime": "APRIL 14, 2019"
    //       },
    //       {
-   //          "/img": "/img/bg-img/23.jpg",
+   //          "img": "img/bg-img/23.jpg",
    //          "name": "TRAVEL",
    //          "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
    //          "dateTime": "APRIL 14, 2019"
    //       },
    //       {
-   //          "/img": "/img/bg-img/24.jpg",
+   //          "img": "img/bg-img/24.jpg",
    //          "name": "POLITICS",
    //          "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
    //          "dateTime": "APRIL 14, 2019"
@@ -333,25 +333,25 @@ module.exports = (app) => {
    //       {
    //          "name": "Jamie Smith",
    //          "job": "Enough space for a whole line. I am a Web-udvikler",
-   //          "/img": "/img/bg-img/29.jpg",
+   //          "img": "img/bg-img/29.jpg",
    //          "dateTime": "06:34 AM, APRIL 14, 2018"
    //       },
    //       {
    //          "name": "Christy Williams",
    //          "job": "Enough space for a whole line. I am a Web-designer",
-   //          "/img": "/img/bg-img/30.jpg",
+   //          "img": "img/bg-img/30.jpg",
    //          "dateTime": "06:34 AM, APRIL 14, 2018"
    //       },
    //       {
    //          "name": "Sandy Doe",
    //          "job": " Enough space for a whole line. I am a Medie-grafiker",
-   //          "/img": "/img/bg-img/31.jpg",
+   //          "img": "img/bg-img/31.jpg",
    //          "dateTime": "06:34 AM, APRIL 14, 2018"
    //       },
    //       {
    //          "name": "Christian Williams",
    //          "job": "Enough space for a whole line. I am a Nimbus 2000",
-   //          "/img": "/img/bg-img/32.jpg",
+   //          "img": "img/bg-img/32.jpg",
    //          "dateTime": "06:34 AM, APRIL 14, 2018"
    //       }
    //    ]
@@ -377,37 +377,37 @@ module.exports = (app) => {
       
       let post = [
          {
-            "img": "/img/bg-img/19.jpg",
+            "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"  
          },
          {
-            "img": "/img/bg-img/20.jpg",
+            "img": "img/bg-img/20.jpg",
             "name": "POLITICS",
             "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/21.jpg",
+            "img": "img/bg-img/21.jpg",
             "name": "HEALTH",
             "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/22.jpg",
+            "img": "img/bg-img/22.jpg",
             "name": "FINANCE",
             "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/23.jpg",
+            "img": "img/bg-img/23.jpg",
             "name": "TRAVEL",
             "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
             "dateTime": "APRIL 14, 2019"
          },
          {
-            "img": "/img/bg-img/24.jpg",
+            "img": "img/bg-img/24.jpg",
             "name": "POLITICS",
             "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
             "dateTime": "APRIL 14, 2019"
@@ -418,39 +418,39 @@ module.exports = (app) => {
          {
             "name": "Jamie Smith",
             "job": "Enough space for a whole line. I am a Web-udvikler",
-            "/img": "/img/bg-img/29.jpg"
+            "img": "img/bg-img/29.jpg"
          },
          {
             "name": "Janni Smith",
             "job": "Enough space for a whole line. I am a Web-designer",
-            "/img": "/img/bg-img/30.jpg"
+            "img": "img/bg-img/30.jpg"
          },
          {
             "name": "Kirsten Smith",
             "job": " Enough space for a whole line. I am a Medie-grafiker",
-            "/img": "/img/bg-img/31.jpg"
+            "img": "img/bg-img/31.jpg"
          },
          {
             "name": "Oliver Smith",
             "job": "Enough space for a whole line. I am a Nimbus 2000",
-            "/img": "/img/bg-img/32.jpg"
+            "img": "img/bg-img/32.jpg"
          }
       ]
       
       let liveComment = [
          {
             "name": "Børge Hemming",
-            "/img": "/img/bg-img/30.jpg",
+            "img": "img/bg-img/30.jpg",
             "time": "April 15, 2018 06:34"
          },
          {
             "name": "Biver Demming",
-            "/img": "/img/bg-img/31.jpg",
+            "img": "img/bg-img/31.jpg",
             "time": "April 15, 2018 06:35"
          },
          {
             "name": "Buller flemming",
-            "/img": "/img/bg-img/32.jpg",
+            "img": "img/bg-img/32.jpg",
             "time": "April 15, 2018 06:36"
          },
       ]
@@ -516,42 +516,42 @@ module.exports = (app) => {
          {
             "name": "James Williams",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t1.jpg"
+            "img": "img/bg-img/t1.jpg"
          },
          {
             "name": "Christinne Smith",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t2.jpg"
+            "img": "img/bg-img/t2.jpg"
          },
          {
             "name": "Alicia Dormund",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t3.jpg"
+            "img": "img/bg-img/t3.jpg"
          },
          {
             "name": "Steve Duncan",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t4.jpg"
+            "img": "img/bg-img/t4.jpg"
          },
          {
             "name": "James Williams",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t5.jpg"
+            "img": "img/bg-img/t5.jpg"
          },
          {
             "name": "Christinne Smith",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t6.jpg"
+            "img": "img/bg-img/t6.jpg"
          },
          {
             "name": "Alicia Dormund",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t7.jpg"
+            "img": "img/bg-img/t7.jpg"
          },
          {
             "name": "Steve Duncan",
             "job": "Senior Editor",
-            "/img": "/img/bg-img/t8.jpg"
+            "img": "img/bg-img/t8.jpg"
          }
       ]
 
