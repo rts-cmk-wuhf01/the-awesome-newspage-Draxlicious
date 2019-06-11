@@ -5,7 +5,7 @@ module.exports = (app) => {
    app.get('/database',  async (req,res,next)=>{
       let db = await mysql.connect();
       // udfør en (eller flere) forespørgel(er)
-      let [products] = await db.execute('SELECT * FROM products');e
+      let [products] = await db.execute('SELECT * FROM products');
       // afslut forbindelsen til databasen
       db.end();
 
@@ -113,6 +113,12 @@ module.exports = (app) => {
       FROM categories
       `);
       console.log(categories)
+
+      let [lastestPostWidget] = await db.execute(`
+      SELECT fk_article_image_id, article_content, article_date
+      FROM article
+      `)
+      console.log(lastestPostWidget)
       db.end();
 
       let products = [
@@ -192,7 +198,8 @@ module.exports = (app) => {
          "latestNews": news,
          "editorsPost": editors,
          "worldNews": worldnews,
-         "categories": categories
+         "categories": categories,
+         "lastestPostWidget": lastestPostWidget
       });
    });
 
