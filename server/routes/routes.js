@@ -114,11 +114,8 @@ module.exports = (app) => {
       `);
       console.log(categories)
 
-      let [lastestPostWidget] = await db.execute(`
-      SELECT fk_article_image_id, article_content, article_date,
-      FROM article
-      `)
-      console.log(lastestPostWidget)
+
+
       db.end();
 
       let products = [
@@ -199,7 +196,7 @@ module.exports = (app) => {
          "editorsPost": editors,
          "worldNews": worldnews,
          "categories": categories,
-         "lastestPostWidget": lastestPostWidget
+
       });
    });
 
