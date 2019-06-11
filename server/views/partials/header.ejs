@@ -9,7 +9,7 @@
                         <div class="top-header-content d-flex align-items-center justify-content-between">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="/"><img src="img/core-img/logo.png" alt=""></a>
+                                <a href="/"><img src="/img/core-img/logo.png" alt=""></a>
                             </div>
 
                             <!-- Login Search Area -->
@@ -42,7 +42,7 @@
 
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="/"><img src="img/core-img/logo.png" alt=""></a>
+                            <a href="/"><img src="/img/core-img/logo.png" alt=""></a>
                         </div>
 
                         <!-- Navbar Toggler -->
@@ -110,7 +110,7 @@
                                                 <!-- Single Featured Post -->
                                                 <div class="single-blog-post small-featured-post d-flex">
                                                     <div class="post-thumb">
-                                                        <a href="#"><img src="img/bg-img/23.jpg" alt=""></a>
+                                                        <a href="#"><img src="/img/bg-img/23.jpg" alt=""></a>
                                                     </div>
                                                     <div class="post-data">
                                                         <a href="#" class="post-catagory">Travel</a>
@@ -126,7 +126,7 @@
                                                 <!-- Single Featured Post -->
                                                 <div class="single-blog-post small-featured-post d-flex">
                                                     <div class="post-thumb">
-                                                        <a href="#"><img src="img/bg-img/24.jpg" alt=""></a>
+                                                        <a href="#"><img src="/img/bg-img/24.jpg" alt=""></a>
                                                     </div>
                                                     <div class="post-data">
                                                         <a href="#" class="post-catagory">Politics</a>
@@ -141,13 +141,13 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="#">Politics</a></li>
-                                    <li><a href="#">Breaking News</a></li>
-                                    <li><a href="#">Business</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">Health</a></li>
-                                    <li><a href="#">Travel</a></li>
-                                    <li><a href="#">Sports</a></li>
+
+<% if(typeof categories != 'undefined'){ %>
+   <% categories.forEach(category =>{ %>
+      <li><a href="/categori/<%=category.category_id %>"><%=category.category_title %></a></li>
+   <% }); %>
+<% } %>
+
                                     <li><a href="contact">Contact</a></li>
                                 </ul>
                             </div>
