@@ -112,9 +112,11 @@ module.exports = (app) => {
       SELECT *
       FROM categories
       `);
-      console.log(categories)
-
-
+      
+      let [latestPostWidget] = await db.execute(`
+      SELECT article_id, fk_article_image_id, article_content, article_date
+      FROM article
+      `)
 
       db.end();
 
@@ -196,8 +198,8 @@ module.exports = (app) => {
          "editorsPost": editors,
          "worldNews": worldnews,
          "categories": categories,
-
-      });
+         "latestPostWidget": latestPostWidget
+      });   
    });
 
    app.get('/categori/:category_id', async (req, res, next) => {
