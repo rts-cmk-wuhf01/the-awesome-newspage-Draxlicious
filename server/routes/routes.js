@@ -138,6 +138,12 @@ module.exports = (app) => {
       LIMIT 6
       `)
       
+      let [latestNews] = await db.execute(`
+      SELECT article_id, article_title, article_date
+      FROM article
+      ORDER BY article_date DESC
+      LIMIT 4
+      `)
 
       db.end();
 
@@ -215,7 +221,7 @@ module.exports = (app) => {
          'latestProducts': products,
          'bedsteIs': lækkerIs,
          "latestPost": post,
-         "latestNews": news,
+         "latestNews": latestNews,
          "editorsPost": editors,
          "worldNews": worldnews,
          "categories": categories,
