@@ -112,6 +112,15 @@ module.exports = (app) => {
       SELECT *
       FROM categories
       `);
+
+      let [homeNews] = await db.execute(`
+      SELECT article_id, article_title, article_date, image_name, article_likes, article_comment, article_content, category_title, category_id
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN categories ON category_id = fk_article_category_id
+      ORDER BY article_likes DESC
+      LIMIT 4
+      `);
       
       let [latestPostWidget] = await db.execute(`
       SELECT article_id, image_name, article_title, article_date, category_title, category_id
@@ -202,7 +211,8 @@ module.exports = (app) => {
          "editorsPost": editors,
          "worldNews": worldnews,
          "categories": categories,
-         "latestPostWidget": latestPostWidget
+         "latestPostWidget": latestPostWidget,
+         "homeNews": homeNews
       });   
    });
 
