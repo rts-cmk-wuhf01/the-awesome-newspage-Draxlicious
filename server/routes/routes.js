@@ -130,6 +130,14 @@ module.exports = (app) => {
       ORDER BY article_date DESC
       LIMIT 6
       `)
+      let [editors] = await db.execute(`
+      SELECT article_id, image_name, article_title, article_date
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      ORDER BY image_id
+      LIMIT 6
+      `)
+      
 
       db.end();
 
