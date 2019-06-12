@@ -114,8 +114,12 @@ module.exports = (app) => {
       `);
       
       let [latestPostWidget] = await db.execute(`
-      SELECT article_id, fk_article_image_id, article_content, article_date
+      SELECT article_id, image_name, article_title, article_date, category_title, category_id
       FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN categories ON category_id = fk_article_category_id
+      ORDER BY article_date DESC
+      LIMIT 6
       `)
 
       db.end();
