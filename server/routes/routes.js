@@ -251,6 +251,22 @@ module.exports = (app) => {
       SELECT *
       FROM categories
       `);
+
+      let [latestNews] = await db.execute(`
+      SELECT article_id, article_title, article_date
+      FROM article
+      ORDER BY article_date DESC
+      LIMIT 4
+      `)
+      
+      let [latestComment] = await db.execute(`
+      SELECT article_id, article_title, article_date, image_name, author_name
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN authors ON author_id = fk_article_author_id
+      ORDER BY article_date DESC
+      LIMIT 4
+      `)
       db.end();
 
       let post = [
@@ -322,10 +338,11 @@ module.exports = (app) => {
       res.render('categori',  {
          'title': 'Kategori',
          "latestPost": post,
-         "latestComment": comment,
-         "latestNews": news,
+         "latestComment": latestComment,
+         "latestNews": latestNews,
          "articles": articles,
-         "categories": categories
+         "categories": categories,
+         "latestNews": latestNews
 
       });
    });
@@ -415,6 +432,22 @@ module.exports = (app) => {
       SELECT *
       FROM categories
       `);
+
+      let [latestNews] = await db.execute(`
+      SELECT article_id, article_title, article_date
+      FROM article
+      ORDER BY article_date DESC
+      LIMIT 4
+      `)
+
+      let [latestComment] = await db.execute(`
+      SELECT article_id, article_title, article_date, image_name, author_name
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN authors ON author_id = fk_article_author_id
+      ORDER BY article_date DESC
+      LIMIT 4
+      `)
       db.end();
       
       let post = [
@@ -500,10 +533,11 @@ module.exports = (app) => {
       res.render('post',  {   
          'title': 'Article',
          "latestPost": post,
-         "latestComment": comment,
-         "latestNews": news,
+         "latestComment": latestComment,
+         "latestNews": latestNews,
          "commentArea": liveComment,
-         "categories": categories
+         "categories": categories,
+         
       });
    });
 

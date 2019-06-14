@@ -1,13 +1,13 @@
 <h3>Latest Comments</h3>
 <% latestComment.forEach(comment => {%>
-<% let now = new Date(comment.dateTime); %>
+<% let now = new Date(comment.article_date); %>
     <!-- Single Comments -->
     <div class="single-comments d-flex">
         <div class="comments-thumbnail mr-15">
-            <img src="<%= comment.img %>" alt="">
+            <img src="/img/bg-img/<%= comment.image_name %>" alt="">
         </div>
         <div class="comments-text">
-            <a href="#"><%= comment.name%> <span>on</span> <%= comment.job%></a>
+            <a href="#"><%= comment.author_name%> <span>on</span> <%= comment.article_title%></a>
             <p><%= dateAndTime.format(now, 'HH:MM A, MMMM, YYYY') %></p>
         </div>
     </div>
