@@ -258,13 +258,22 @@ module.exports = (app) => {
       ORDER BY article_date DESC
       LIMIT 4
       `)
-      
+
       let [latestComment] = await db.execute(`
       SELECT article_id, article_title, article_date, image_name, author_name
       FROM article
       INNER JOIN images ON image_id = fk_article_image_id
       INNER JOIN authors ON author_id = fk_article_author_id
       ORDER BY article_date DESC
+      LIMIT 4
+      `)
+
+      let [latestPostArea] = await db.execute(`
+      SELECT article_id, article_title, article_content article_comment, article_likes, image_name, author_name, author_title
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN authors ON author_id = fk_article_author_id
+      ORDER BY article_likes DESC
       LIMIT 4
       `)
       db.end();
@@ -342,7 +351,8 @@ module.exports = (app) => {
          "latestNews": latestNews,
          "articles": articles,
          "categories": categories,
-         "latestNews": latestNews
+         "latestNews": latestNews,
+         "latestPostArea": latestPostArea
 
       });
    });
