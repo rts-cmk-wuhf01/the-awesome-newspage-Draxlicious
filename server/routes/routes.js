@@ -145,6 +145,14 @@ module.exports = (app) => {
       LIMIT 4
       `)
 
+      let [worldnews] = await db.execute(`
+      SELECT article_id, article_title, article_date, image_name
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      ORDER BY article_date DESC
+      LIMIT 5
+      `)
+
       db.end();
 
       let products = [
