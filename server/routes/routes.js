@@ -686,4 +686,9 @@ module.exports = (app) => {
       });
    });
 
+   //  tilføjes i routes.js filen f.eks. lige under app.get('/contact') endpoint
+   app.post('/contact', (req, res, next) => {
+      res.send(req.body);
+});
+
 };
