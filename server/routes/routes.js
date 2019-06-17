@@ -1,5 +1,23 @@
 const mysql = require('../config/mysql')
 
+let adress = [
+   {
+      "title": "Adress",
+      "main": "481 Creekside Lane Avila",
+      "second": "Beach, CA 93424"
+   },
+   {
+      "title": "Phone",
+      "main": "+53 345 7953 32453",
+      "second": "+53 345 7557 822112",
+   },
+   {
+      "title": "Email",
+      "main": "yourmail@gmail.com",
+   },
+
+]
+
 
 async function getCategories() {
    let db = await mysql.connect();
@@ -664,32 +682,9 @@ module.exports = (app) => {
 
 
    app.get('/contact', async (req, res, next) => {
-      let db = await mysql.connect();
-      // Navigation menu
-      let [categories] = await db.execute(`
-      SELECT *
-      FROM categories
-      `);
-      db.end();
-
-      let adress = [
-         {
-            "title": "Adress",
-            "main": "481 Creekside Lane Avila",
-            "second": "Beach, CA 93424"
-         },
-         {
-            "title": "Phone",
-            "main": "+53 345 7953 32453",
-            "second": "+53 345 7557 822112",
-         },
-         {
-            "title": "Email",
-            "main": "yourmail@gmail.com",
-         },
-
-      ]
-
+     
+      let categories = await getCategories();
+      
       res.render('contact',  {
          'title': 'Kontakt',
          "formularAdress": adress,
@@ -699,30 +694,13 @@ module.exports = (app) => {
 
    //  tilføjes i routes.js filen f.eks. lige under app.get('/contact') endpoint
    app.post('/contact', async (req, res, next) => {
-      let db = await mysql.connect();
-      let result = await db.execute(`
-         INSERT INTO messages 
-            (message_name, message_email, message_subject, message_text, message_date) 
-         VALUES 
-            (?,?,?,?,?)`, [name, email, subject, message, contactDate]);
-      db.end();
          // indsamling af værdierne og oprettelse af de nødvendige variabler.
-   
-         // affected rows er større end nul, hvis en (eller flere) række(r) blev indsat
-if (result[0].affectedRows > 0) {
-   return_message.push('Tak for din besked, vi vender tilbage hurtigst muligt');
-} else {
-   return_message.push('Din besked blev ikke modtaget.... ');
-}
-
-   
-   
    let name = req.body.name;
    let email = req.body.email;
    let subject = req.body.subject;
    let message = req.body.message;
    let contactDate = new Date();
- 
+
    // håndter valideringen, alle fejl pushes til et array så de er samlet ET sted
    let return_message = [];
    if (name == undefined || name == '') {
@@ -738,10 +716,11 @@ if (result[0].affectedRows > 0) {
       return_message.push('Beskedteksten mangler');
    }
 
+   // dette er et kort eksempel på strukturen, denne udvides selvfølgelig til noget mere brugbart
+   // hvis der er 1 eller flere elementer i `return_message`, så mangler der noget
    if (return_message.length > 0) {
       // der er mindst 1 information der mangler, returner beskeden som en string.
       let categories = await getCategories(); // denne forklares lige om lidt!
- 
 
       res.render('contact', {
          'title': 'Kontakt',
@@ -749,10 +728,33 @@ if (result[0].affectedRows > 0) {
          'categories': categories,
          'return_message': return_message.join(', '),
          'values': req.body // læg mærke til vi "bare" sender req.body tilbage
+         
       });
    
    } else {
-      res.send(req.body);
+      let db = await mysql.connect();
+      let result = await db.execute(`
+         INSERT INTO messages 
+            (message_name, message_email, message_subject, message_text, message_date) 
+         VALUES 
+            (?,?,?,?,?)`, [name, email, subject, message, contactDate]);
+      db.end();
+
+      // affected rows er større end nul, hvis en (eller flere) række(r) blev indsat
+      if (result[0].affectedRows > 0) {
+         return_message.push('Tak for din besked, vi vender tilbage hurtigst muligt');
+      } else {
+         return_message.push('Din besked blev ikke modtaget.... ');
+      }
+
+      let categories = await getCategories(); // denne har jeg ikke forklaret endnu! 
+      res.render('contact', {
+         'title': 'Kontakt',
+         "formularAdress": adress,
+         'categories': categories,
+         'return_message': return_message.join(', '),
+         'values': []
+      });
    }
 });
 
