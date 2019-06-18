@@ -298,11 +298,11 @@ module.exports = (app) => {
       `)
 
       let [latestPostArea] = await db.execute(`
-      SELECT article_id, article_title, article_content article_comment, article_likes, image_name, author_name, author_title
+      SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
       FROM article
       INNER JOIN images ON image_id = fk_article_image_id
       INNER JOIN authors ON author_id = fk_article_author_id
-      ORDER BY article_likes DESC
+      ORDER BY article_comment DESC
       LIMIT 4
       `)
       db.end();
@@ -691,6 +691,8 @@ module.exports = (app) => {
          "categories": categories
       });
    });
+
+   
 
    //  tilføjes i routes.js filen f.eks. lige under app.get('/contact') endpoint
    app.post('/contact', async (req, res, next) => {
