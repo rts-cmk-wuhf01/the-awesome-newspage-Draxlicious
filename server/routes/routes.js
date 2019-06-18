@@ -31,7 +31,7 @@ async function getCategories() {
 
 module.exports = (app) => {
 
-   app.get('/database',  async (req,res,next)=>{
+   app.get('/database', async (req, res, next) => {
       let db = await mysql.connect();
       // udfør en (eller flere) forespørgel(er)
       let [products] = await db.execute('SELECT * FROM products');
@@ -43,97 +43,97 @@ module.exports = (app) => {
       res.render('products', {
          'products': products
       })
-});   
+   });
 
-   
-      const editors = [
-         {
-            "img": "img/bg-img/1.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
-         },
-         {
-            "img": "img/bg-img/2.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
-         },
-         {
-            "img": "img/bg-img/3.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
-         },
-         {
-            "img": "img/bg-img/4.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
-         },
-         {
-            "img": "img/bg-img/5.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
-         },
-         {
-            "img": "img/bg-img/6.jpg",
-            "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
-            "dateTime": "February 11, 2018"
-         }
-      ]
-      
-      const worldnews = [
-         {
-            "number": 1,
-            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
-            "dateTime": 'February 11, 2018',
-            "img": "img/bg-img/7.jpg"
-         },
-         {
-            "number": 1,
-            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
-            "dateTime": 'February 11, 2018',
-            "img": "img/bg-img/8.jpg"
-         },
-         {
-            "number": 1,
-            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
-            "dateTime": 'February 11, 2018',
-            "img": "img/bg-img/9.jpg"
-         },
-         {
-            "number": 1,
-            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
-            "dateTime": 'February 11, 2018',
-            "img": "img/bg-img/10.jpg"
-         },
-         {
-            "number": 1,
-            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
-            "dateTime": 'February 11, 2018',
-            "img": "img/bg-img/11.jpg"
-         },
-      ]
 
-      const news = [
-         {
-            "number": 1,
-            "text":  "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
-            "dateTime": 'APRIL 14, 2019'
-         },
-         {
-            "number": 2,
-            "text":  " Consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer.",
-            "dateTime": 'APRIL 14, 2019'
-         },
-         {
-            "number": 3,
-            "text":  " Adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo.",
-            "dateTime": 'APRIL 14, 2019'
-         },
-         {
-            "number": 4,
-            "text":  " Eu metus sit amet odio sodales placer. Sed varius leo ac...",
-            "dateTime": 'APRIL 14, 2019'
-         },
-      ]
+   const editors = [
+      {
+         "img": "img/bg-img/1.jpg",
+         "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
+         "dateTime": "February 11, 2018"
+      },
+      {
+         "img": "img/bg-img/2.jpg",
+         "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
+         "dateTime": "February 11, 2018"
+      },
+      {
+         "img": "img/bg-img/3.jpg",
+         "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
+         "dateTime": "February 11, 2018"
+      },
+      {
+         "img": "img/bg-img/4.jpg",
+         "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
+         "dateTime": "February 11, 2018"
+      },
+      {
+         "img": "img/bg-img/5.jpg",
+         "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
+         "dateTime": "February 11, 2018"
+      },
+      {
+         "img": "img/bg-img/6.jpg",
+         "text": "Orci varius natoque penatibus et magnis dis parturient montes.",
+         "dateTime": "February 11, 2018"
+      }
+   ]
+
+   const worldnews = [
+      {
+         "number": 1,
+         "text": "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+         "dateTime": 'February 11, 2018',
+         "img": "img/bg-img/7.jpg"
+      },
+      {
+         "number": 1,
+         "text": "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+         "dateTime": 'February 11, 2018',
+         "img": "img/bg-img/8.jpg"
+      },
+      {
+         "number": 1,
+         "text": "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+         "dateTime": 'February 11, 2018',
+         "img": "img/bg-img/9.jpg"
+      },
+      {
+         "number": 1,
+         "text": "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+         "dateTime": 'February 11, 2018',
+         "img": "img/bg-img/10.jpg"
+      },
+      {
+         "number": 1,
+         "text": "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+         "dateTime": 'February 11, 2018',
+         "img": "img/bg-img/11.jpg"
+      },
+   ]
+
+   const news = [
+      {
+         "number": 1,
+         "text": "Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.",
+         "dateTime": 'APRIL 14, 2019'
+      },
+      {
+         "number": 2,
+         "text": " Consectetur adipiscing elit. Nam eu metus sit amet odio sodales placer.",
+         "dateTime": 'APRIL 14, 2019'
+      },
+      {
+         "number": 3,
+         "text": " Adipiscing elit. Nam eu metus sit amet odio sodales placer. Sed varius leo.",
+         "dateTime": 'APRIL 14, 2019'
+      },
+      {
+         "number": 4,
+         "text": " Eu metus sit amet odio sodales placer. Sed varius leo ac...",
+         "dateTime": 'APRIL 14, 2019'
+      },
+   ]
 
    app.get('/', async (req, res, next) => {
       let db = await mysql.connect();
@@ -150,14 +150,19 @@ module.exports = (app) => {
       ORDER BY article_likes DESC
       LIMIT 4
       `);
-      
+
       let [latestPostWidget] = await db.execute(`
-      SELECT article_id, image_name, article_title, article_date, category_title, category_id
-      FROM article
-      INNER JOIN images ON image_id = fk_article_image_id
-      INNER JOIN categories ON category_id = fk_article_category_id
-      ORDER BY article_date DESC
-      LIMIT 6
+         SELECT category_id , category_title , article_id , article_title , article_date, image_name
+         FROM categories
+         LEFT OUTER JOIN article ON fk_article_category_id = category_id
+         INNER JOIN images ON image_id = fk_article_image_id
+         WHERE article_id = (
+            SELECT article_id
+            FROM article
+            WHERE fk_article_category_id = category_id
+            ORDER BY article_date DESC
+            LIMIT 1)
+         ORDER BY article_date DESC
       `)
       let [editors] = await db.execute(`
       SELECT article_id, image_name, article_title, article_date
@@ -166,7 +171,7 @@ module.exports = (app) => {
       ORDER BY image_id
       LIMIT 6
       `)
-      
+
       let [latestNews] = await db.execute(`
       SELECT article_id, article_title, article_date
       FROM article
@@ -219,7 +224,7 @@ module.exports = (app) => {
             "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "APRIL 14, 2019"  
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/20.jpg",
@@ -253,7 +258,7 @@ module.exports = (app) => {
          }
       ]
 
-      res.render('home',  {
+      res.render('home', {
          'title': 'Min Forside',
          'latestProducts': products,
          'bedsteIs': lækkerIs,
@@ -264,12 +269,12 @@ module.exports = (app) => {
          "categories": categories,
          "latestPostWidget": latestPostWidget,
          "homeNews": homeNews
-      });   
+      });
    });
 
    app.get('/categori/:category_id', async (req, res, next) => {
       let db = await mysql.connect();
-      
+
       let [articles] = await db.execute(`
       SELECT *
       FROM article 
@@ -312,7 +317,7 @@ module.exports = (app) => {
             "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "APRIL 14, 2019"  
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/20.jpg",
@@ -372,8 +377,8 @@ module.exports = (app) => {
             "dateTime": "06:34 AM, APRIL 14, 2018"
          }
       ]
-      
-      res.render('categori',  {
+
+      res.render('categori', {
          'title': 'Kategori',
          "latestPost": post,
          "latestComment": latestComment,
@@ -387,7 +392,7 @@ module.exports = (app) => {
    });
 
    // app.get('/categori', (req, res, next) => {
- 
+
    //    let post = [
    //       {
    //          "img": "img/bg-img/19.jpg",
@@ -453,7 +458,7 @@ module.exports = (app) => {
    //          "dateTime": "06:34 AM, APRIL 14, 2018"
    //       }
    //    ]
-      
+
 
 
    //    res.render('categori',  {
@@ -488,13 +493,13 @@ module.exports = (app) => {
       LIMIT 4
       `)
       db.end();
-      
+
       let post = [
          {
             "img": "img/bg-img/19.jpg",
             "name": "FINANCE",
             "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "APRIL 14, 2019"  
+            "dateTime": "APRIL 14, 2019"
          },
          {
             "img": "img/bg-img/20.jpg",
@@ -550,7 +555,7 @@ module.exports = (app) => {
             "img": "img/bg-img/32.jpg"
          }
       ]
-      
+
       let liveComment = [
          {
             "name": "Børge Hemming",
@@ -569,14 +574,14 @@ module.exports = (app) => {
          },
       ]
 
-      res.render('post',  {   
+      res.render('post', {
          'title': 'Article',
          "latestPost": post,
          "latestComment": latestComment,
          "latestNews": latestNews,
          "commentArea": liveComment,
          "categories": categories,
-         
+
       });
    });
 
@@ -588,7 +593,7 @@ module.exports = (app) => {
       FROM categories
       `);
       db.end();
-      
+
       let aboutText = [
          {
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi nibh, et ornare neque ullamcorper ac. Nam id congue lec tus, a venenatis massa. Maecenas justo libero, vulputate vel nunc id, blandit feugiat sem."
@@ -670,7 +675,7 @@ module.exports = (app) => {
          }
       ]
 
-      res.render('about',  {
+      res.render('about', {
          'title': 'About us',
          "textForAbout": aboutText,
          "counter": aboutCounter,
@@ -678,86 +683,86 @@ module.exports = (app) => {
          "categories": categories
       });
    });
-   
+
 
 
    app.get('/contact', async (req, res, next) => {
-     
+
       let categories = await getCategories();
-      
-      res.render('contact',  {
+
+      res.render('contact', {
          'title': 'Kontakt',
          "formularAdress": adress,
          "categories": categories
       });
    });
 
-   
+
 
    //  tilføjes i routes.js filen f.eks. lige under app.get('/contact') endpoint
    app.post('/contact', async (req, res, next) => {
-         // indsamling af værdierne og oprettelse af de nødvendige variabler.
-   let name = req.body.name;
-   let email = req.body.email;
-   let subject = req.body.subject;
-   let message = req.body.message;
-   let contactDate = new Date();
+      // indsamling af værdierne og oprettelse af de nødvendige variabler.
+      let name = req.body.name;
+      let email = req.body.email;
+      let subject = req.body.subject;
+      let message = req.body.message;
+      let contactDate = new Date();
 
-   // håndter valideringen, alle fejl pushes til et array så de er samlet ET sted
-   let return_message = [];
-   if (name == undefined || name == '') {
-      return_message.push('Navn mangler');
-   }
-   if (email == undefined || email == '') {
-      return_message.push('Email mangler');
-   }
-   if (subject == undefined || subject == '') {
-      return_message.push('Emne mangler');
-   }
-   if (message == undefined || message == '') {
-      return_message.push('Beskedteksten mangler');
-   }
+      // håndter valideringen, alle fejl pushes til et array så de er samlet ET sted
+      let return_message = [];
+      if (name == undefined || name == '') {
+         return_message.push('Navn mangler');
+      }
+      if (email == undefined || email == '') {
+         return_message.push('Email mangler');
+      }
+      if (subject == undefined || subject == '') {
+         return_message.push('Emne mangler');
+      }
+      if (message == undefined || message == '') {
+         return_message.push('Beskedteksten mangler');
+      }
 
-   // dette er et kort eksempel på strukturen, denne udvides selvfølgelig til noget mere brugbart
-   // hvis der er 1 eller flere elementer i `return_message`, så mangler der noget
-   if (return_message.length > 0) {
-      // der er mindst 1 information der mangler, returner beskeden som en string.
-      let categories = await getCategories(); // denne forklares lige om lidt!
+      // dette er et kort eksempel på strukturen, denne udvides selvfølgelig til noget mere brugbart
+      // hvis der er 1 eller flere elementer i `return_message`, så mangler der noget
+      if (return_message.length > 0) {
+         // der er mindst 1 information der mangler, returner beskeden som en string.
+         let categories = await getCategories(); // denne forklares lige om lidt!
 
-      res.render('contact', {
-         'title': 'Kontakt',
-         "formularAdress": adress,
-         'categories': categories,
-         'return_message': return_message.join(', '),
-         'values': req.body // læg mærke til vi "bare" sender req.body tilbage
-         
-      });
-   
-   } else {
-      let db = await mysql.connect();
-      let result = await db.execute(`
+         res.render('contact', {
+            'title': 'Kontakt',
+            "formularAdress": adress,
+            'categories': categories,
+            'return_message': return_message.join(', '),
+            'values': req.body // læg mærke til vi "bare" sender req.body tilbage
+
+         });
+
+      } else {
+         let db = await mysql.connect();
+         let result = await db.execute(`
          INSERT INTO messages 
             (message_name, message_email, message_subject, message_text, message_date) 
          VALUES 
             (?,?,?,?,?)`, [name, email, subject, message, contactDate]);
-      db.end();
+         db.end();
 
-      // affected rows er større end nul, hvis en (eller flere) række(r) blev indsat
-      if (result[0].affectedRows > 0) {
-         return_message.push('Tak for din besked, vi vender tilbage hurtigst muligt');
-      } else {
-         return_message.push('Din besked blev ikke modtaget.... ');
+         // affected rows er større end nul, hvis en (eller flere) række(r) blev indsat
+         if (result[0].affectedRows > 0) {
+            return_message.push('Tak for din besked, vi vender tilbage hurtigst muligt');
+         } else {
+            return_message.push('Din besked blev ikke modtaget.... ');
+         }
+
+         let categories = await getCategories(); // denne har jeg ikke forklaret endnu! 
+         res.render('contact', {
+            'title': 'Kontakt',
+            "formularAdress": adress,
+            'categories': categories,
+            'return_message': return_message.join(', '),
+            'values': []
+         });
       }
-
-      let categories = await getCategories(); // denne har jeg ikke forklaret endnu! 
-      res.render('contact', {
-         'title': 'Kontakt',
-         "formularAdress": adress,
-         'categories': categories,
-         'return_message': return_message.join(', '),
-         'values': []
-      });
-   }
-});
+   });
 
 };
