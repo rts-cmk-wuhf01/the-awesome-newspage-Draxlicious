@@ -13,14 +13,14 @@
                         <div class="single-blog-post">
                         
                             <div class="post-thumb">
-                                <a href="#"><img src="/img/bg-img/<%= editor.image_name %>" alt=""></a>
+                                <a href="/post/<%= editor.article_id %>"><img src="/img/bg-img/<%= editor.image_name %>" alt=""></a>
                             </div>
                             <div class="post-data">
-                                <a href="#" class="post-title">
+                                <a href="/post/<%= editor.article_id %>" class="post-title">
                                     <h6><%= editor.article_title %></h6>
                                 </a>
                                 <div class="post-meta">
-                                    <div class="post-date"><a href="#"><%= dateAndTime.format(now, 'MMMM DD, YYYY') %></a></div>
+                                    <div class="post-date"><a href="/post/<%= editor.article_id %>"><%= dateAndTime.format(now, 'MMMM DD, YYYY') %></a></div>
                                 </div>
                             </div>
                         </div>

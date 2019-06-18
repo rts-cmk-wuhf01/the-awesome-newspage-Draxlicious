@@ -48,6 +48,34 @@ async function getLatestPost(){
    return latestPostWidget;
 }
 
+async function getLatestNews(){
+   let db = await mysql.connect();
+   let [latestNews] = await db.execute(`
+   SELECT article_id, article_title, article_date
+   FROM article
+   ORDER BY article_date DESC
+   LIMIT 4
+`)
+db.end();
+return latestNews;
+}
+
+
+async function getLatestComment(){
+   let db = await mysql.connect();
+   let [latestComment] = await db.execute(`
+   SELECT article_id, article_title, article_date, image_name, author_name
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN authors ON author_id = fk_article_author_id
+      ORDER BY article_date DESC
+      LIMIT 4
+`)
+db.end();
+return latestComment;
+}
+
+
 module.exports = (app) => {
 
    app.get('/database', async (req, res, next) => {
@@ -162,6 +190,8 @@ module.exports = (app) => {
       // Sortere efter categori id og derefter deres date-time
       let latestPostWidget  = await getLatestPost();
 
+      let latestNews  = await  getLatestNews();
+
       let [homeNews] = await db.execute(`
       SELECT article_id, article_title, article_date, image_name, article_likes, article_comment, article_content, category_title, category_id
       FROM article
@@ -171,8 +201,7 @@ module.exports = (app) => {
       LIMIT 4
       `);
 
-      
-
+   
       let [editors] = await db.execute(`
       SELECT article_id, image_name, article_title, article_date
       FROM article
@@ -181,12 +210,6 @@ module.exports = (app) => {
       LIMIT 6
       `)
 
-      let [latestNews] = await db.execute(`
-      SELECT article_id, article_title, article_date
-      FROM article
-      ORDER BY article_date DESC
-      LIMIT 4
-      `)
 
       let [worldnews] = await db.execute(`
       SELECT article_id, article_title, article_date, image_name
@@ -298,27 +321,27 @@ module.exports = (app) => {
       // Navigation menu
       let categories = await getCategories();
 
+      // Lastest post
       let latestPostWidget  = await getLatestPost();
 
-      let [latestNews] = await db.execute(`
-      SELECT article_id, article_title, article_date
-      FROM article
-      ORDER BY article_date DESC
-      LIMIT 4
-      `)
+      // Most populair News
+      let latestNews  = await  getLatestNews();
+      
+      // Latest Comments
+      let latestComment = await getLatestComment();
 
       // version 1
-      sql = `
-      SELECT article_id, article_title, article_date, image_name, author_name
-      FROM article
-      INNER JOIN images ON image_id = fk_article_image_id
-      INNER JOIN authors ON author_id = fk_article_author_id
-      ORDER BY article_date DESC
-      LIMIT 4
-      `
-      sqlValues = [];
+      // sql = `
+      // SELECT article_id, article_title, article_date, image_name, author_name
+      // FROM article
+      // INNER JOIN images ON image_id = fk_article_image_id
+      // INNER JOIN authors ON author_id = fk_article_author_id
+      // ORDER BY article_date DESC
+      // LIMIT 4
+      // `
+      // sqlValues = [];
 
-      let [latestComment] = await db.execute(sql, sqlValues);
+      // let [latestComment] = await db.execute(sql, sqlValues);
 
       // let [latestPostArea] = await db.execute(`
       // SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
@@ -436,9 +459,6 @@ module.exports = (app) => {
       let db = await mysql.connect();
 
       try{
-
-    
-
       let [article] = await db.execute(`
       SELECT image_name, article_id, article_title, article_content, article_likes, article_comment, author_name, author_title, author_about, category_title
       FROM article
@@ -456,27 +476,27 @@ module.exports = (app) => {
       // Navigation menu
       let categories = await getCategories();
       
+      // Latest post
       let latestPostWidget  = await getLatestPost();
 
-      let [latestNews] = await db.execute(`
-      SELECT article_id, article_title, article_date
-      FROM article
-      ORDER BY article_date DESC
-      LIMIT 4
-      `)
+      // Most populair News
+      let latestNews  = await  getLatestNews();
+      
+      // Latest Comment
+      let latestComment = await getLatestComment();
 
       // version 1
-      sql = `
-      SELECT article_id, article_title, article_date, image_name, author_name
-      FROM article
-      INNER JOIN images ON image_id = fk_article_image_id
-      INNER JOIN authors ON author_id = fk_article_author_id
-      ORDER BY article_date DESC
-      LIMIT 4
-      `
-      sqlValues = [];
+      // sql = `
+      // SELECT article_id, article_title, article_date, image_name, author_name
+      // FROM article
+      // INNER JOIN images ON image_id = fk_article_image_id
+      // INNER JOIN authors ON author_id = fk_article_author_id
+      // ORDER BY article_date DESC
+      // LIMIT 4
+      // `
+      // sqlValues = [];
 
-      let [latestComment] = await db.execute(sql, sqlValues);
+      // let [latestComment] = await db.execute(sql, sqlValues);
 
       // let [latestPostArea] = await db.execute(`
       // SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
