@@ -7,7 +7,7 @@
             <img src="/img/bg-img/<%= comment.image_name %>" alt="">
         </div>
         <div class="comments-text">
-            <a href="#"><%= comment.author_name%> <span>on</span> <%= comment.article_title%></a>
+            <a href="/post/<%= comment.article_id %>"><%= comment.author_name%> <span>on</span> <%= comment.article_title%></a>
             <p><%= dateAndTime.format(now, 'HH:MM A, MMMM, YYYY') %></p>
         </div>
     </div>

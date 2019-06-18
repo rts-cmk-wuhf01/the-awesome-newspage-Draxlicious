@@ -2,6 +2,9 @@
 
 <ol>
 <!-- Single Comment Area -->
+<%if(typeof commentArea != "undefined"){%>
+
+
     <li class="single_comment_area"><% commentArea.forEach(comment => {%>
             <% let now = new Date(comment.time); %>
         <!-- Comment Content -->
@@ -18,5 +21,6 @@
             </div>
         </div>
         <%})%>
+        <%} %>
     </li>
 </ol>

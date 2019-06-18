@@ -24,9 +24,28 @@ async function getCategories() {
    let [categories] = await db.execute(`
       SELECT category_id, category_title 
       FROM categories
-      ORDER BY category_title ASC`);
+`);
    db.end();
    return categories;
+}
+
+async function getLatestPost(){
+   let db = await mysql.connect();
+   let [latestPostWidget] = await db.execute(`
+   SELECT category_id , category_title , article_id , article_title , article_date, image_name
+   FROM categories
+   LEFT OUTER JOIN article ON fk_article_category_id = category_id
+   INNER JOIN images ON image_id = fk_article_image_id
+   WHERE article_id = (
+      SELECT article_id
+      FROM article
+      WHERE fk_article_category_id = category_id
+      ORDER BY article_date DESC
+      LIMIT 1)
+   ORDER BY article_date DESC
+`)
+   db.end();
+   return latestPostWidget;
 }
 
 module.exports = (app) => {
@@ -138,10 +157,10 @@ module.exports = (app) => {
    app.get('/', async (req, res, next) => {
       let db = await mysql.connect();
 
-      let [categories] = await db.execute(`
-      SELECT *
-      FROM categories
-      `);
+      let categories = await getCategories();
+      
+      // Sortere efter categori id og derefter deres date-time
+      let latestPostWidget  = await getLatestPost();
 
       let [homeNews] = await db.execute(`
       SELECT article_id, article_title, article_date, image_name, article_likes, article_comment, article_content, category_title, category_id
@@ -152,20 +171,8 @@ module.exports = (app) => {
       LIMIT 4
       `);
 
-      // Sortere efter categori id og derefter deres date-time
-      let [latestPostWidget] = await db.execute(`
-         SELECT category_id , category_title , article_id , article_title , article_date, image_name
-         FROM categories
-         LEFT OUTER JOIN article ON fk_article_category_id = category_id
-         INNER JOIN images ON image_id = fk_article_image_id
-         WHERE article_id = (
-            SELECT article_id
-            FROM article
-            WHERE fk_article_category_id = category_id
-            ORDER BY article_date DESC
-            LIMIT 1)
-         ORDER BY article_date DESC
-      `)
+      
+
       let [editors] = await db.execute(`
       SELECT article_id, image_name, article_title, article_date
       FROM article
@@ -289,10 +296,9 @@ module.exports = (app) => {
 
 
       // Navigation menu
-      let [categories] = await db.execute(`
-      SELECT *
-      FROM categories
-      `);
+      let categories = await getCategories();
+
+      let latestPostWidget  = await getLatestPost();
 
       let [latestNews] = await db.execute(`
       SELECT article_id, article_title, article_date
@@ -418,9 +424,175 @@ module.exports = (app) => {
          "latestNews": latestNews,
          "categories": categories,
          "latestNews": latestNews,
-         "latestPostArea": latestPostArea
+         "latestPostArea": latestPostArea,
+         "latestPostWidget": latestPostWidget
 
       });
+   });
+
+
+
+   app.get('/post/:article_id', async (req, res, next) => {
+      let db = await mysql.connect();
+
+      try{
+
+    
+
+      let [article] = await db.execute(`
+      SELECT image_name, article_id, article_title, article_content, article_likes, article_comment, author_name, author_title, author_about, category_title
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN authors ON author_id = fk_article_author_id
+      INNER JOIN categories ON category_id = fk_article_category_id
+      WHERE article_id = ?
+      `, [req.params.article_id]);
+
+      // Disse to variabler bruges til database udtræk
+      let sql = "";
+      let sqlValues = [];
+
+
+      // Navigation menu
+      let categories = await getCategories();
+      
+      let latestPostWidget  = await getLatestPost();
+
+      let [latestNews] = await db.execute(`
+      SELECT article_id, article_title, article_date
+      FROM article
+      ORDER BY article_date DESC
+      LIMIT 4
+      `)
+
+      // version 1
+      sql = `
+      SELECT article_id, article_title, article_date, image_name, author_name
+      FROM article
+      INNER JOIN images ON image_id = fk_article_image_id
+      INNER JOIN authors ON author_id = fk_article_author_id
+      ORDER BY article_date DESC
+      LIMIT 4
+      `
+      sqlValues = [];
+
+      let [latestComment] = await db.execute(sql, sqlValues);
+
+      // let [latestPostArea] = await db.execute(`
+      // SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
+      // FROM article
+      // INNER JOIN images ON image_id = fk_article_image_id
+      // INNER JOIN authors ON author_id = fk_article_author_id
+      // WHERE fk_article_category_id = ?
+      // ORDER BY article_comment DESC
+      // LIMIT 4 
+      // `, [req.params.category_id]);
+
+
+      // Henter artikler der tilhøre den kategori_id der er nævnt i url (ser WHERE clause)
+      // sql = `
+      // SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
+      // FROM article
+      // INNER JOIN images ON image_id = fk_article_image_id
+      // INNER JOIN authors ON author_id = fk_article_author_id
+      // WHERE fk_article_category_id = ?
+      // ORDER BY article_comment DESC
+      // LIMIT 4 
+      // `;
+
+      // sqlValues = [req.params.category_id]
+
+      // let [latestPostArea] = await db.execute(sql, sqlValues);
+
+
+
+      
+      db.end();
+
+      let post = [
+         {
+            "img": "img/bg-img/19.jpg",
+            "name": "FINANCE",
+            "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "dateTime": "APRIL 14, 2019"
+         },
+         {
+            "img": "img/bg-img/20.jpg",
+            "name": "POLITICS",
+            "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
+            "dateTime": "APRIL 14, 2019"
+         },
+         {
+            "img": "img/bg-img/21.jpg",
+            "name": "HEALTH",
+            "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "dateTime": "APRIL 14, 2019"
+         },
+         {
+            "img": "img/bg-img/22.jpg",
+            "name": "FINANCE",
+            "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
+            "dateTime": "APRIL 14, 2019"
+         },
+         {
+            "img": "img/bg-img/23.jpg",
+            "name": "TRAVEL",
+            "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+            "dateTime": "APRIL 14, 2019"
+         },
+         {
+            "img": "img/bg-img/24.jpg",
+            "name": "POLITICS",
+            "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
+            "dateTime": "APRIL 14, 2019"
+         }
+      ]
+
+      let comment = [
+         {
+            "name": "Jamie Smith",
+            "job": "Enough space for a whole line. I am a Web-udvikler",
+            "img": "img/bg-img/29.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
+         },
+         {
+            "name": "Christy Williams",
+            "job": "Enough space for a whole line. I am a Web-designer",
+            "img": "img/bg-img/30.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
+         },
+         {
+            "name": "Sandy Doe",
+            "job": " Enough space for a whole line. I am a Medie-grafiker",
+            "img": "img/bg-img/31.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
+         },
+         {
+            "name": "Christian Williams",
+            "job": "Enough space for a whole line. I am a Nimbus 2000",
+            "img": "img/bg-img/32.jpg",
+            "dateTime": "06:34 AM, APRIL 14, 2018"
+         }
+      ]
+   
+      res.render('post', {
+         'title': 'Kategori',
+         "latestPost": post,
+         "latestComment": latestComment,
+         "latestNews": latestNews,
+         "categories": categories,
+         "latestNews": latestNews,
+         // "latestPostArea": latestPostArea,
+         "articleData": article,
+         "latestPostWidget": latestPostWidget
+
+      });
+   }
+   catch(error){
+      console.log(error.message);
+      
+   }
+
    });
 
    // app.get('/categori', (req, res, next) => {
@@ -501,130 +673,130 @@ module.exports = (app) => {
    //    });
    // });
 
-   app.get('/post', async (req, res, next) => {
-      let db = await mysql.connect();
-      // Navigation menu
-      let [categories] = await db.execute(`
-      SELECT *
-      FROM categories
-      `);
+   // app.get('/post', async (req, res, next) => {
+   //    let db = await mysql.connect();
+   //    // Navigation menu
+   //    let [categories] = await db.execute(`
+   //    SELECT *
+   //    FROM categories
+   //    `);
 
-      let [latestNews] = await db.execute(`
-      SELECT article_id, article_title, article_date
-      FROM article
-      ORDER BY article_date DESC
-      LIMIT 4
-      `)
+   //    let [latestNews] = await db.execute(`
+   //    SELECT article_id, article_title, article_date
+   //    FROM article
+   //    ORDER BY article_date DESC
+   //    LIMIT 4
+   //    `)
 
-      let [latestComment] = await db.execute(`
-      SELECT article_id, article_title, article_date, image_name, author_name
-      FROM article
-      INNER JOIN images ON image_id = fk_article_image_id
-      INNER JOIN authors ON author_id = fk_article_author_id
-      ORDER BY article_date DESC
-      LIMIT 4
-      `)
-      db.end();
+   //    let [latestComment] = await db.execute(`
+   //    SELECT article_id, article_title, article_date, image_name, author_name
+   //    FROM article
+   //    INNER JOIN images ON image_id = fk_article_image_id
+   //    INNER JOIN authors ON author_id = fk_article_author_id
+   //    ORDER BY article_date DESC
+   //    LIMIT 4
+   //    `)
+   //    db.end();
 
-      let post = [
-         {
-            "img": "img/bg-img/19.jpg",
-            "name": "FINANCE",
-            "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "APRIL 14, 2019"
-         },
-         {
-            "img": "img/bg-img/20.jpg",
-            "name": "POLITICS",
-            "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
-            "dateTime": "APRIL 14, 2019"
-         },
-         {
-            "img": "img/bg-img/21.jpg",
-            "name": "HEALTH",
-            "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "APRIL 14, 2019"
-         },
-         {
-            "img": "img/bg-img/22.jpg",
-            "name": "FINANCE",
-            "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "dateTime": "APRIL 14, 2019"
-         },
-         {
-            "img": "img/bg-img/23.jpg",
-            "name": "TRAVEL",
-            "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
-            "dateTime": "APRIL 14, 2019"
-         },
-         {
-            "img": "img/bg-img/24.jpg",
-            "name": "POLITICS",
-            "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
-            "dateTime": "APRIL 14, 2019"
-         }
-      ]
+   //    let post = [
+   //       {
+   //          "img": "img/bg-img/19.jpg",
+   //          "name": "FINANCE",
+   //          "text": "1Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+   //          "dateTime": "APRIL 14, 2019"
+   //       },
+   //       {
+   //          "img": "img/bg-img/20.jpg",
+   //          "name": "POLITICS",
+   //          "text": "2Sed a elit euismod augue semper congue sit amet ac sapien.",
+   //          "dateTime": "APRIL 14, 2019"
+   //       },
+   //       {
+   //          "img": "img/bg-img/21.jpg",
+   //          "name": "HEALTH",
+   //          "text": "3Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+   //          "dateTime": "APRIL 14, 2019"
+   //       },
+   //       {
+   //          "img": "img/bg-img/22.jpg",
+   //          "name": "FINANCE",
+   //          "text": "4Augue semper congue sit amet ac sapien. Fusce consequat.",
+   //          "dateTime": "APRIL 14, 2019"
+   //       },
+   //       {
+   //          "img": "img/bg-img/23.jpg",
+   //          "name": "TRAVEL",
+   //          "text": "5Pellentesque mattis arcu massa, nec fringilla turpis eleifend id.",
+   //          "dateTime": "APRIL 14, 2019"
+   //       },
+   //       {
+   //          "img": "img/bg-img/24.jpg",
+   //          "name": "POLITICS",
+   //          "text": "6Augue semper congue sit amet ac sapien. Fusce consequat.",
+   //          "dateTime": "APRIL 14, 2019"
+   //       }
+   //    ]
 
-      let comment = [
-         {
-            "name": "Jamie Smith",
-            "job": "Enough space for a whole line. I am a Web-udvikler",
-            "img": "img/bg-img/29.jpg"
-         },
-         {
-            "name": "Janni Smith",
-            "job": "Enough space for a whole line. I am a Web-designer",
-            "img": "img/bg-img/30.jpg"
-         },
-         {
-            "name": "Kirsten Smith",
-            "job": " Enough space for a whole line. I am a Medie-grafiker",
-            "img": "img/bg-img/31.jpg"
-         },
-         {
-            "name": "Oliver Smith",
-            "job": "Enough space for a whole line. I am a Nimbus 2000",
-            "img": "img/bg-img/32.jpg"
-         }
-      ]
+   //    let comment = [
+   //       {
+   //          "name": "Jamie Smith",
+   //          "job": "Enough space for a whole line. I am a Web-udvikler",
+   //          "img": "img/bg-img/29.jpg"
+   //       },
+   //       {
+   //          "name": "Janni Smith",
+   //          "job": "Enough space for a whole line. I am a Web-designer",
+   //          "img": "img/bg-img/30.jpg"
+   //       },
+   //       {
+   //          "name": "Kirsten Smith",
+   //          "job": " Enough space for a whole line. I am a Medie-grafiker",
+   //          "img": "img/bg-img/31.jpg"
+   //       },
+   //       {
+   //          "name": "Oliver Smith",
+   //          "job": "Enough space for a whole line. I am a Nimbus 2000",
+   //          "img": "img/bg-img/32.jpg"
+   //       }
+   //    ]
 
-      let liveComment = [
-         {
-            "name": "Børge Hemming",
-            "img": "img/bg-img/30.jpg",
-            "time": "April 15, 2018 06:34"
-         },
-         {
-            "name": "Biver Demming",
-            "img": "img/bg-img/31.jpg",
-            "time": "April 15, 2018 06:35"
-         },
-         {
-            "name": "Buller flemming",
-            "img": "img/bg-img/32.jpg",
-            "time": "April 15, 2018 06:36"
-         },
-      ]
+   //    let liveComment = [
+   //       {
+   //          "name": "Børge Hemming",
+   //          "img": "img/bg-img/30.jpg",
+   //          "time": "April 15, 2018 06:34"
+   //       },
+   //       {
+   //          "name": "Biver Demming",
+   //          "img": "img/bg-img/31.jpg",
+   //          "time": "April 15, 2018 06:35"
+   //       },
+   //       {
+   //          "name": "Buller flemming",
+   //          "img": "img/bg-img/32.jpg",
+   //          "time": "April 15, 2018 06:36"
+   //       },
+   //    ]
 
-      res.render('post', {
-         'title': 'Article',
-         "latestPost": post,
-         "latestComment": latestComment,
-         "latestNews": latestNews,
-         "commentArea": liveComment,
-         "categories": categories,
+   //    res.render('post', {
+   //       'title': 'Article',
+   //       "latestPost": post,
+   //       "latestComment": latestComment,
+   //       "latestNews": latestNews,
+   //       "commentArea": liveComment,
+   //       "categories": categories,
 
-      });
-   });
+   //    });
+   // });
 
    app.get('/about', async (req, res, next) => {
-      let db = await mysql.connect();
+
+
       // Navigation menu
-      let [categories] = await db.execute(`
-      SELECT *
-      FROM categories
-      `);
-      db.end();
+      let categories = await getCategories();
+
+      
+
 
       let aboutText = [
          {

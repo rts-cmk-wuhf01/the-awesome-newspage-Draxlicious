@@ -6,7 +6,7 @@
 <% let now = new Date(news.article_date); %>
     <!-- Single Popular Blog -->
     <div class="single-popular-post">
-        <a href="#">
+        <a href="/post/<%= news.article_id %>">
             <h6><span><%= index+1%>.</span><%= news.article_title%></h6>
         </a>
         <p><%= dateAndTime.format(now, 'MMMM DD, YYYY') %></p>
