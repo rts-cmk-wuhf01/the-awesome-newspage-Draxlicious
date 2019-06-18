@@ -151,6 +151,7 @@ module.exports = (app) => {
       LIMIT 4
       `);
 
+      // Sortere efter categori id og derefter deres date-time
       let [latestPostWidget] = await db.execute(`
          SELECT category_id , category_title , article_id , article_title , article_date, image_name
          FROM categories
@@ -275,6 +276,9 @@ module.exports = (app) => {
    app.get('/categori/:category_id', async (req, res, next) => {
       let db = await mysql.connect();
 
+      let sql = "";
+      let sqlValues = [];
+
       let [articles] = await db.execute(`
       SELECT *
       FROM article 
@@ -302,14 +306,36 @@ module.exports = (app) => {
       LIMIT 4
       `)
 
-      let [latestPostArea] = await db.execute(`
+      // let [latestPostArea] = await db.execute(`
+      // SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
+      // FROM article
+      // INNER JOIN images ON image_id = fk_article_image_id
+      // INNER JOIN authors ON author_id = fk_article_author_id
+      // WHERE fk_article_category_id = ?
+      // ORDER BY article_comment DESC
+      // LIMIT 4 
+      // `, [req.params.category_id]);
+
+
+
+      sql = `
       SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
       FROM article
       INNER JOIN images ON image_id = fk_article_image_id
       INNER JOIN authors ON author_id = fk_article_author_id
+      WHERE fk_article_category_id = ?
       ORDER BY article_comment DESC
-      LIMIT 4
-      `)
+      LIMIT 4 
+      `;
+
+      sqlValues = [req.params.category_id]
+
+      
+      let [latestPostArea] = await db.execute(sql, sqlValues);
+
+
+
+      
       db.end();
 
       let post = [
