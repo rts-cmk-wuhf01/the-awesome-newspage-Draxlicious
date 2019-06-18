@@ -137,6 +137,7 @@ module.exports = (app) => {
 
    app.get('/', async (req, res, next) => {
       let db = await mysql.connect();
+
       let [categories] = await db.execute(`
       SELECT *
       FROM categories
@@ -262,27 +263,30 @@ module.exports = (app) => {
       res.render('home', {
          'title': 'Min Forside',
          'latestProducts': products,
-         'bedsteIs': lækkerIs,
          "latestPost": post,
          "latestNews": latestNews,
          "editorsPost": editors,
          "worldNews": worldnews,
          "categories": categories,
          "latestPostWidget": latestPostWidget,
-         "homeNews": homeNews
+         "homeNews": homeNews,
+         // test
+         "person": {
+            "fornavn": "Lukas"
+         },
+         // test på lækker is
+         'bedsteIs': lækkerIs,
+         
       });
    });
 
    app.get('/categori/:category_id', async (req, res, next) => {
       let db = await mysql.connect();
 
+      // Disse to variabler bruges til database udtræk
       let sql = "";
       let sqlValues = [];
 
-      let [articles] = await db.execute(`
-      SELECT *
-      FROM article 
-      WHERE fk_article_category_id = ?`, [req.params.category_id]);
 
       // Navigation menu
       let [categories] = await db.execute(`
@@ -297,14 +301,18 @@ module.exports = (app) => {
       LIMIT 4
       `)
 
-      let [latestComment] = await db.execute(`
+      // version 1
+      sql = `
       SELECT article_id, article_title, article_date, image_name, author_name
       FROM article
       INNER JOIN images ON image_id = fk_article_image_id
       INNER JOIN authors ON author_id = fk_article_author_id
       ORDER BY article_date DESC
       LIMIT 4
-      `)
+      `
+      sqlValues = [];
+
+      let [latestComment] = await db.execute(sql, sqlValues);
 
       // let [latestPostArea] = await db.execute(`
       // SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
@@ -317,7 +325,7 @@ module.exports = (app) => {
       // `, [req.params.category_id]);
 
 
-
+      // Henter artikler der tilhøre den kategori_id der er nævnt i url (ser WHERE clause)
       sql = `
       SELECT article_id, article_title, article_content, article_comment, article_likes, image_name, author_name, author_title
       FROM article
@@ -330,7 +338,6 @@ module.exports = (app) => {
 
       sqlValues = [req.params.category_id]
 
-      
       let [latestPostArea] = await db.execute(sql, sqlValues);
 
 
@@ -409,7 +416,6 @@ module.exports = (app) => {
          "latestPost": post,
          "latestComment": latestComment,
          "latestNews": latestNews,
-         "articles": articles,
          "categories": categories,
          "latestNews": latestNews,
          "latestPostArea": latestPostArea
