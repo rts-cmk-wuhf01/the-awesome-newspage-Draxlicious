@@ -85,10 +85,38 @@ module.exports = (app) => {
       // afslut forbindelsen til databasen
       db.end();
 
+      // res.send sender kun data med mellem paranteserne for hurtigt at udskrive noget
       // res.send(products);
 
+      // res.render sender filen med som hedder products (filen er products.ejs men den sidste del skrives ikke)
       res.render('products', {
          'products': products
+      })
+   });
+
+
+
+   app.get('/fisk/:antal/:type', async (req, res, next) => {
+
+         let antal = {
+            "fiskData": [req.params.fisk],
+         }
+         let type = {
+            "typeData": [req.params.type],
+         }
+         
+         let fisk = "her har du 3 fisk"
+
+
+         let dataFisk = {
+            // udskriver antallet i url og på siden
+            antal: req.params.antal,
+            type: req.params.type
+         }
+
+      res.render('fisk',{
+         "fisk": fisk, 
+         "dataFisk": dataFisk
       })
    });
 
@@ -364,14 +392,9 @@ module.exports = (app) => {
       ORDER BY article_comment DESC
       LIMIT 4 
       `;
-
       sqlValues = [req.params.category_id]
-
       let [latestPostArea] = await db.execute(sql, sqlValues);
 
-
-
-      
       db.end();
 
       let post = [
@@ -454,7 +477,6 @@ module.exports = (app) => {
    });
 
 
-
    app.get('/post/:article_id', async (req, res, next) => {
       let db = await mysql.connect();
 
@@ -525,8 +547,6 @@ module.exports = (app) => {
       // let [latestPostArea] = await db.execute(sql, sqlValues);
 
 
-
-      
       db.end();
 
       let post = [
