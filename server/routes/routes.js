@@ -98,15 +98,6 @@ module.exports = (app) => {
 
    app.get('/fisk/:antal/:type', async (req, res, next) => {
 
-         let antal = {
-            "fiskData": [req.params.fisk],
-         }
-         let type = {
-            "typeData": [req.params.type],
-         }
-         
-         let fisk = "her har du 3 fisk"
-
 
          let dataFisk = {
             // udskriver antallet i url og på siden
@@ -114,8 +105,7 @@ module.exports = (app) => {
             type: req.params.type
          }
 
-      res.render('fisk',{
-         "fisk": fisk, 
+      res.render('fisk',{ 
          "dataFisk": dataFisk
       })
    });
