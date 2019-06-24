@@ -97,6 +97,7 @@ module.exports = (app) => {
 
 
    app.get('/fisk/:antal/:type', async (req, res, next) => {
+      // http://localhost:3000/fisk/5/sild eksempel
 
 
          let dataFisk = {
