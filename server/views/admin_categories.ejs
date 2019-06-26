@@ -5,7 +5,12 @@
     name="category_title"
     value="<%= typeof category != 'undefined' ? category.category_title : '' %>">
   <button>Gem</button>
+  <a href="/admin/categories">Anuller</a>
 </form>
+
+<% if( typeof return_message != 'undefined'){ %>
+    <h4><%= return_message %></h4>
+<% } %>
 
 <table>
   <thead>
