@@ -26,8 +26,11 @@ module.exports = app => {
     app.post("/admin/categories", async (req, res, next) => {
         // her skal vi modtage form data og indsætte det i databasen
         // send bruger tilbage til kategori admin listen
+
+        // opretter en variabel til name attributten category_title
         let title = req.body.category_title;
 
+        // opretter et tomt array der kan pushes data ind i. Siger hvis title er undefined eller tomt så push navn mangler
         let return_message = [];
         if (title == undefined || title == '') {
             return_message.push('Navn mangler');
@@ -37,7 +40,8 @@ module.exports = app => {
             // der er mindst 1 information der mangler, returner beskeden som en string.
             let categories = await getCategories(); // denne forklares lige om lidt!
 
-
+            // res.render filerne bliver sammensat hvis længden er mere end 1
+            // giver mig categories, returner et komma mellem rum fra return_message og sender req.body tilbage
             res.render('admin_categories', {
                 'categories': categories,
                 'return_message': return_message.join(', '),
@@ -45,6 +49,7 @@ module.exports = app => {
             });
 
         }
+        // hvis ikke skal den redirect mig tilbage til start siden
         else {
             let db = await mysql.connect();
             let result = await db.execute(`
@@ -58,10 +63,12 @@ module.exports = app => {
 
     });
 
+    // min route til rediger
     app.get("/admin/categories/edit/:category_id", async (req, res, next) => {
         // denne route skal hente både alle kategorier og den ene kategori
         // data skal sendes til template filen
 
+        // fortæller category_title skal være det samme som category_id i url
         let db = await mysql.connect();
         let [category] = await db.execute(`
       SELECT category_title
@@ -70,10 +77,13 @@ module.exports = app => {
       `, [req.params.category_id]);
         db.end();
 
+        // udskriver categories metoden med al indhold i den
         let categories = await getCategories();
 
+        // siger hvad der må køres på siden
         res.render("admin_categories", {
             "categories": categories,
+            // udskriver den første da det ikke er et array
             "category": category[0]
         })
     });
@@ -108,11 +118,11 @@ module.exports = app => {
         else {
             let db = await mysql.connect();
             let [result] = await db.execute(
-        `   
-            UPDATE categories 
-            SET category_title = ?
-            WHERE category_id = ?
-        `,
+                `   
+                UPDATE categories 
+                SET category_title = ?
+                WHERE category_id = ?
+            `,
                 [title, req.params.category_id]
             );
             db.end();
@@ -130,7 +140,7 @@ module.exports = app => {
         let [result] = await db.execute(`
         DELETE FROM categories
          WHERE category_id = ?`
-         , [req.params.category_id]
+            , [req.params.category_id]
         );
         db.end();
         res.redirect("/admin/categories")
