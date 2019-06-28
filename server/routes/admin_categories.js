@@ -1,5 +1,8 @@
 const mysql = require("../config/mysql");
 
+
+// en asynkron funktion der er oprettet ude af score og kan blive kaldt overalt
+// kræver en await for at blive kørt med sql
 async function getCategories() {
     let db = await mysql.connect();
     let [categories] = await db.execute(`
@@ -13,11 +16,14 @@ async function getCategories() {
 
 module.exports = app => {
 
+    // http://localhost:3000/admin/categories
     // her placeres alle de routes administrations panelet har brug for 
-
     app.get("/admin/categories", async (req, res, next) => {
         // her skal alle kategorier hentes og sendes til template filen.....
+
+        // her bliver oprettet en variabel der awaiter getcategories funktionen
         let categories = await getCategories();
+
         res.render("admin_categories", {
             "categories": categories
         })
@@ -52,6 +58,11 @@ module.exports = app => {
         // hvis ikke skal den redirect mig tilbage til start siden
         else {
             let db = await mysql.connect();
+            
+            // denne variabel udskriver vi med et sigende navn for at forklare men ikke nødvendigvis at kalde den andre steder.
+            // INSERT INTO vælger den tabel i din database som du vil arbejde med.
+            // SET vægler den kolonne i den tabel du har valgt at arbejde i.
+            // category_title indsætter den næste oprettelse i tabellen.
             let result = await db.execute(`
               INSERT INTO categories
               SET category_title = ?
@@ -59,8 +70,6 @@ module.exports = app => {
             db.end();
             res.redirect("/admin/categories")
         }
-
-
     });
 
     // min route til rediger
@@ -95,7 +104,7 @@ module.exports = app => {
 
 
 
-
+        // opretter en variabel så jeg ikke behøver skrive den lange values hver gang og det har et sigende navn.
         let title = req.body.category_title;
 
         let return_message = [];
@@ -116,6 +125,7 @@ module.exports = app => {
 
         }
         else {
+            // opdater i category og sætter category's indhold til at være det samme som categoryid
             let db = await mysql.connect();
             let [result] = await db.execute(
                 `   
@@ -136,6 +146,7 @@ module.exports = app => {
         // benyt endpoint parameter til at slette en kategori fra databasen
         // send bruger tilbage til kategori admin listen
 
+        // sletter fra categories hvor categorid der er trykket på
         let db = await mysql.connect();
         let [result] = await db.execute(`
         DELETE FROM categories
