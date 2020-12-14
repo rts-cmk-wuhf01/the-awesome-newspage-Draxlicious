@@ -212,7 +212,7 @@ module.exports = (app) => {
       let latestNews  = await  getLatestNews();
 
       let [homeNews] = await db.execute(`
-      SELECT article_id, article_title, article_date, image_name, article_likes, article_comment, article_content, category_title, category_id
+      SELECT article_id, article_title, article_date, image_name, article_likes, article_content, category_title, category_id
       FROM article
       INNER JOIN images ON image_id = fk_article_image_id
       INNER JOIN categories ON category_id = fk_article_category_id
